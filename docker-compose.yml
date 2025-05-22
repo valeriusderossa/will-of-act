@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: woa-postgres
+    restart: always
+    ports:
+      - "6666:5432"
+    environment:
+      POSTGRES_DB: woa_db
+      POSTGRES_USER: woa_user
+      POSTGRES_PASSWORD: woa_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U woa_user -d woa_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  postgres_data:

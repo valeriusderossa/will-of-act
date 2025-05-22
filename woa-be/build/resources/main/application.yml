@@ -1,0 +1,8 @@
+
+
+spring:
+  application:
+    name: will-of-act
+  
+server:
+  port: 8081
