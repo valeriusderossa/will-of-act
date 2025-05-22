@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4c11d81-7a99-4bee-9672-7c3fa6a26612" name="Changes" comment="wd">
+    <list default="true" id="f4c11d81-7a99-4bee-9672-7c3fa6a26612" name="Changes" comment="clean up affiramtion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/controller/AffirmationController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/controller/AffirmationController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/dto/AffirmationResponseDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/dto/AffirmationResponseDto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/dto/AffirmationSummaryDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/dto/AffirmationSummaryDto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/entity/Affirmation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/entity/Affirmation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/service/AffirmationService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/kotlin/org/woa/service/AffirmationService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/styles.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +100,11 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Spring Boot.WoaBeApplication (1).executor": "Run",
     "Spring Boot.WoaBeApplication.executor": "Run",
-    "git-widget-placeholder": "implemet",
+    "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/kamil/Documents/Projects/Own/will-of-act",
@@ -255,7 +267,7 @@
       <workItem from="1747859644512" duration="2579000" />
       <workItem from="1747892518114" duration="292000" />
       <workItem from="1747923030493" duration="3727000" />
-      <workItem from="1747926766472" duration="1223000" />
+      <workItem from="1747926766472" duration="1995000" />
     </task>
     <task id="LOCAL-00001" summary="working app">
       <option name="closed" value="true" />
@@ -313,7 +325,31 @@
       <option name="project" value="LOCAL" />
       <updated>1747926981342</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="wd">
+      <option name="closed" value="true" />
+      <created>1747928113369</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1747928113369</updated>
+    </task>
+    <task id="LOCAL-00009" summary="wd">
+      <option name="closed" value="true" />
+      <created>1747928289263</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1747928289263</updated>
+    </task>
+    <task id="LOCAL-00010" summary="wd">
+      <option name="closed" value="true" />
+      <created>1747928416887</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747928416887</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +372,7 @@
     </ignored-roots>
     <MESSAGE value="working app" />
     <MESSAGE value="wd" />
-    <option name="LAST_COMMIT_MESSAGE" value="wd" />
+    <MESSAGE value="clean up affiramtion" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean up affiramtion" />
   </component>
 </project>

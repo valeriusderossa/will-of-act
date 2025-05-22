@@ -20,7 +20,7 @@ class AffirmationController(private val affirmationService: AffirmationService) 
         val affirmations = affirmationService.getAllAffirmations(sortBy)
         return ResponseEntity.ok(affirmations)
     }
-    
+
     @GetMapping("/summaries")
     fun getAllAffirmationSummaries(
         @RequestParam(required = false, defaultValue = "createdAt") sortBy: String
@@ -36,23 +36,6 @@ class AffirmationController(private val affirmationService: AffirmationService) 
         } catch (e: NoSuchElementException) {
             ResponseEntity.notFound().build()
         }
-    }
-
-    @GetMapping("/random")
-    fun getRandomAffirmation(): ResponseEntity<AffirmationResponseDto> {
-        return try {
-            ResponseEntity.ok(affirmationService.getRandomAffirmation())
-        } catch (e: NoSuchElementException) {
-            ResponseEntity.notFound().build()
-        }
-    }
-
-    @GetMapping("/most-viewed")
-    fun getMostViewedAffirmations(
-        @RequestParam(required = false, defaultValue = "10") limit: Int
-    ): ResponseEntity<List<AffirmationResponseDto>> {
-        val affirmations = affirmationService.getMostViewedAffirmations(limit)
-        return ResponseEntity.ok(affirmations)
     }
 
     @PostMapping

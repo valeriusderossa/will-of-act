@@ -24,12 +24,6 @@ data class Affirmation(
     val text: String,
 
     /**
-     * Number of times this affirmation has been viewed.
-     */
-    @Column(nullable = false)
-    val viewCount: Int = 0,
-
-    /**
      * Timestamp when the affirmation was created.
      */
     @Column(nullable = false, updatable = false)

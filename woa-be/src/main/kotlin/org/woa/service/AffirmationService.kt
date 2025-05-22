@@ -23,8 +23,6 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
         val sortedAffirmations = when (sortBy) {
             "createdAt" -> affirmations.sortedByDescending { it.createdAt }
             "createdAtAsc" -> affirmations.sortedBy { it.createdAt }
-            "viewCount" -> affirmations.sortedByDescending { it.viewCount }
-            "viewCountAsc" -> affirmations.sortedBy { it.viewCount }
             else -> affirmations.sortedByDescending { it.createdAt } // Default sort
         }
         
@@ -41,8 +39,6 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
         val sortedAffirmations = when (sortBy) {
             "createdAt" -> affirmations.sortedByDescending { it.createdAt }
             "createdAtAsc" -> affirmations.sortedBy { it.createdAt }
-            "viewCount" -> affirmations.sortedByDescending { it.viewCount }
-            "viewCountAsc" -> affirmations.sortedBy { it.viewCount }
             else -> affirmations.sortedByDescending { it.createdAt } // Default sort
         }
         
@@ -56,13 +52,7 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
     fun getAffirmationById(id: Long): AffirmationResponseDto {
         val affirmation = affirmationRepository.findById(id)
             .orElseThrow { NoSuchElementException("Affirmation not found with ID: $id") }
-        
-        // Increment view count
-        val updatedAffirmation = affirmation.copy(
-            viewCount = affirmation.viewCount + 1
-        )
-        
-        return affirmationRepository.save(updatedAffirmation).toResponseDto()
+        return affirmation.toResponseDto();
     }
 
     /**
@@ -72,7 +62,6 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
     fun createAffirmation(requestDto: AffirmationRequestDto): AffirmationResponseDto {
         val affirmation = Affirmation(
             text = requestDto.text,
-            viewCount = 0
         )
         
         return affirmationRepository.save(affirmation).toResponseDto()
@@ -105,44 +94,10 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
         affirmationRepository.deleteById(id)
     }
 
-    /**
-     * Get a random affirmation and increment its view count.
-     */
-    @Transactional
-    fun getRandomAffirmation(): AffirmationResponseDto {
-        val affirmations = affirmationRepository.findAll()
-        if (affirmations.isEmpty()) {
-            throw NoSuchElementException("No affirmations found")
-        }
-        
-        val randomAffirmation = affirmations.random()
-        
-        // Increment view count
-        val updatedAffirmation = randomAffirmation.copy(
-            viewCount = randomAffirmation.viewCount + 1
-        )
-        
-        return affirmationRepository.save(updatedAffirmation).toResponseDto()
-    }
-
-    /**
-     * Get affirmations sorted by view count (most viewed first).
-     */
-    fun getMostViewedAffirmations(limit: Int = 10): List<AffirmationResponseDto> {
-        return affirmationRepository.findAll()
-            .sortedByDescending { it.viewCount }
-            .take(limit)
-            .map { it.toResponseDto() }
-    }
-
-    /**
-     * Extension function to convert Entity to ResponseDto.
-     */
     private fun Affirmation.toResponseDto(): AffirmationResponseDto {
         return AffirmationResponseDto(
             id = this.id,
             text = this.text,
-            viewCount = this.viewCount,
             createdAt = this.createdAt,
             updatedAt = this.updatedAt
         )
@@ -155,7 +110,6 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
         return AffirmationSummaryDto(
             id = this.id,
             text = this.text,
-            viewCount = this.viewCount,
             createdAt = this.createdAt
         )
     }

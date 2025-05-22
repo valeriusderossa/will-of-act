@@ -12,8 +12,7 @@ import java.time.LocalDateTime
 data class AffirmationResponseDto(
     val id: Long?,
     override val text: String,
-    val viewCount: Int,
-    
+
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     val createdAt: LocalDateTime,
     
