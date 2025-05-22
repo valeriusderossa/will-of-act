@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,10 +32,8 @@ export class AffirmationListComponent implements OnInit {
   loading = false;
   message = '';
 
-  constructor(
-    private affirmationService: AffirmationService,
-    private dialog: MatDialog
-  ) {}
+  private readonly affirmationService = inject(AffirmationService);
+  private readonly dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.loadAffirmations();

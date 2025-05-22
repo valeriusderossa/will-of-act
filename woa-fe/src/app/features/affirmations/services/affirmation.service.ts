@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AffirmationResponse, AffirmationSummary } from '../models/affirmation.model';
@@ -9,8 +9,7 @@ import { AffirmationRequest } from '../models/affirmation-request.model';
 })
 export class AffirmationService {
   private readonly API_URL = 'http://localhost:8081/api/affirmations';
-
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   getAllAffirmations(): Observable<AffirmationResponse[]> {
     return this.http.get<AffirmationResponse[]>(this.API_URL);

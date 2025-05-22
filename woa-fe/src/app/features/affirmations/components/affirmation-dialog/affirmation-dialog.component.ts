@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,14 +30,13 @@ export interface AffirmationDialogData {
 export class AffirmationDialogComponent {
   affirmationForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<AffirmationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: AffirmationDialogData
-  ) {
+  private readonly fb = inject(FormBuilder);
+  private readonly dialogRef = inject(MatDialogRef<AffirmationDialogComponent>);
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: AffirmationDialogData) {
     this.affirmationForm = this.fb.group({
       text: [
-        data.affirmation?.text || '', 
+        data.affirmation?.text || '',
         [Validators.required, Validators.minLength(1)]
       ]
     });
