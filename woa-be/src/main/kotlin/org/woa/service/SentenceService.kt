@@ -13,41 +13,26 @@ import java.util.*
 @Service
 class SentenceService(private val sentenceRepository: SentenceRepository) {
 
-    /**
-     * Get all sentences.
-     */
     fun getAllSentences(sortBy: String = "createdAt"): List<SentenceResponseDto> {
         val sentences = sentenceRepository.findAll()
         
-        // Apply sorting
         val sortedSentences = when (sortBy) {
             "createdAt" -> sentences.sortedByDescending { it.createdAt }
             "createdAtAsc" -> sentences.sortedBy { it.createdAt }
-            else -> sentences.sortedByDescending { it.createdAt } // Default sort
+            else -> sentences.sortedByDescending { it.createdAt }
         }
         
         return sortedSentences.map { it.toResponseDto() }
     }
-    
 
-
-
-    /**
-     * Get sentence by ID and increment view count.
-     */
     @Transactional
     fun getSentenceById(id: Long): SentenceResponseDto {
         val sentence = sentenceRepository.findById(id)
             .orElseThrow { NoSuchElementException("Sentence not found with ID: $id") }
         
-
-        
         return sentence.toResponseDto()
     }
 
-    /**
-     * Create a new sentence.
-     */
     @Transactional
     fun createSentence(requestDto: SentenceRequestDto): SentenceResponseDto {
         val sentence = Sentence(
@@ -59,9 +44,6 @@ class SentenceService(private val sentenceRepository: SentenceRepository) {
         return sentenceRepository.save(sentence).toResponseDto()
     }
 
-    /**
-     * Update an existing sentence.
-     */
     @Transactional
     fun updateSentence(id: Long, requestDto: SentenceRequestDto): SentenceResponseDto {
         val existingSentence = sentenceRepository.findById(id)
@@ -77,9 +59,6 @@ class SentenceService(private val sentenceRepository: SentenceRepository) {
         return sentenceRepository.save(updatedSentence).toResponseDto()
     }
 
-    /**
-     * Delete a sentence by ID.
-     */
     @Transactional
     fun deleteSentence(id: Long) {
         if (!sentenceRepository.existsById(id)) {
@@ -88,16 +67,12 @@ class SentenceService(private val sentenceRepository: SentenceRepository) {
         sentenceRepository.deleteById(id)
     }
 
-
     fun searchSentences(searchText: String): List<SentenceResponseDto> {
         return sentenceRepository.findByEnglishTextContainingIgnoreCaseOrPolishTextContainingIgnoreCase(
             searchText, searchText
         ).map { it.toResponseDto() }
     }
 
-    /**
-     * Extension function to convert Entity to ResponseDto.
-     */
     private fun Sentence.toResponseDto(): SentenceResponseDto {
         return SentenceResponseDto(
             id = this.id,
@@ -108,5 +83,4 @@ class SentenceService(private val sentenceRepository: SentenceRepository) {
             updatedAt = this.updatedAt
         )
     }
-
 }

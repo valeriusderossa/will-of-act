@@ -49,7 +49,6 @@ class WelcomeController(
             "timestamp" to LocalDateTime.now().toString()
         )
         
-        // Add component health checks
         val components = mutableMapOf<String, Any>()
         
         try {

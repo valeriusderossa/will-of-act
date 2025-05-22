@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonInclude
 import java.time.LocalDateTime
 
-/**
- * Response DTO for affirmation data returned to the client.
- * Includes all relevant fields including system-generated ones.
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class AffirmationResponseDto(
     val id: Long?,

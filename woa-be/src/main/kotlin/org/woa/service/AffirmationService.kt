@@ -12,33 +12,25 @@ import java.util.*
 @Service
 class AffirmationService(private val affirmationRepository: AffirmationRepository) {
 
-    /**
-     * Get all affirmations.
-     */
     fun getAllAffirmations(sortBy: String = "createdAt"): List<AffirmationResponseDto> {
         val affirmations = affirmationRepository.findAll()
 
-        // Apply sorting
         val sortedAffirmations = when (sortBy) {
             "createdAt" -> affirmations.sortedByDescending { it.createdAt }
             "createdAtAsc" -> affirmations.sortedBy { it.createdAt }
-            else -> affirmations.sortedByDescending { it.createdAt } // Default sort
+            else -> affirmations.sortedByDescending { it.createdAt }
         }
 
         return sortedAffirmations.map { it.toResponseDto() }
     }
 
-
     @Transactional
     fun getAffirmationById(id: Long): AffirmationResponseDto {
         val affirmation = affirmationRepository.findById(id)
             .orElseThrow { NoSuchElementException("Affirmation not found with ID: $id") }
-        return affirmation.toResponseDto();
+        return affirmation.toResponseDto()
     }
 
-    /**
-     * Create a new affirmation.
-     */
     @Transactional
     fun createAffirmation(requestDto: AffirmationRequestDto): AffirmationResponseDto {
         val affirmation = Affirmation(
@@ -48,9 +40,6 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
         return affirmationRepository.save(affirmation).toResponseDto()
     }
 
-    /**
-     * Update an existing affirmation.
-     */
     @Transactional
     fun updateAffirmation(id: Long, requestDto: AffirmationRequestDto): AffirmationResponseDto {
         val existingAffirmation = affirmationRepository.findById(id)
@@ -64,9 +53,6 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
         return affirmationRepository.save(updatedAffirmation).toResponseDto()
     }
 
-    /**
-     * Delete an affirmation by ID.
-     */
     @Transactional
     fun deleteAffirmation(id: Long) {
         if (!affirmationRepository.existsById(id)) {
@@ -83,6 +69,4 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
             updatedAt = this.updatedAt
         )
     }
-
-
 }

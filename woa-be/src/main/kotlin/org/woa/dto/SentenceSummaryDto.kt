@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonInclude
 import java.time.LocalDateTime
 
-/**
- * Summary DTO for sentence data with minimal information.
- * Used for list views and summary representations.
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class SentenceSummaryDto(
     val id: Long?,

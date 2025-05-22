@@ -12,11 +12,12 @@ class AffirmationServiceTest extends Specification {
     AffirmationRepository affirmationRepository = Mock()
     AffirmationService affirmationService = new AffirmationService(affirmationRepository)
 
-    def "getAllAffirmations should return all affirmations"() {
+    def "getAllAffirmations should return all affirmations sorted by createdAt desc by default"() {
         given:
+        def now = LocalDateTime.now()
         def affirmations = [
-            new Affirmation(id: 1L, text: "Test affirmation 1"),
-            new Affirmation(id: 2L, text: "Test affirmation 2")
+            new Affirmation(id: 1L, text: "First", createdAt: now.minusDays(1)),
+            new Affirmation(id: 2L, text: "Second", createdAt: now)
         ]
         affirmationRepository.findAll() >> affirmations
 
@@ -25,15 +26,36 @@ class AffirmationServiceTest extends Specification {
 
         then:
         result.size() == 2
-        result[0].id == 1L
-        result[0].text == "Test affirmation 1"
+        result[0].id == 2L // Most recent first
+        result[0].text == "Second"
+        result[1].id == 1L
+        result[1].text == "First"
+    }
+
+    def "getAllAffirmations should sort by createdAt ascending when specified"() {
+        given:
+        def now = LocalDateTime.now()
+        def affirmations = [
+            new Affirmation(id: 1L, text: "First", createdAt: now.minusDays(1)),
+            new Affirmation(id: 2L, text: "Second", createdAt: now)
+        ]
+        affirmationRepository.findAll() >> affirmations
+
+        when:
+        def result = affirmationService.getAllAffirmations("createdAtAsc")
+
+        then:
+        result.size() == 2
+        result[0].id == 1L // Oldest first
+        result[0].text == "First"
         result[1].id == 2L
-        result[1].text == "Test affirmation 2"
+        result[1].text == "Second"
     }
 
     def "getAffirmationById should return the affirmation if found"() {
         given:
-        def affirmation = new Affirmation(id: 1L, text: "Test affirmation")
+        def now = LocalDateTime.now()
+        def affirmation = new Affirmation(id: 1L, text: "Test affirmation", createdAt: now, updatedAt: now)
         affirmationRepository.findById(1L) >> Optional.of(affirmation)
 
         when:
@@ -42,6 +64,8 @@ class AffirmationServiceTest extends Specification {
         then:
         result.id == 1L
         result.text == "Test affirmation"
+        result.createdAt == now
+        result.updatedAt == now
     }
 
     def "getAffirmationById should throw exception if not found"() {
@@ -52,7 +76,8 @@ class AffirmationServiceTest extends Specification {
         affirmationService.getAffirmationById(1L)
 
         then:
-        thrown(NoSuchElementException)
+        def ex = thrown(NoSuchElementException)
+        ex.message == "Affirmation not found with ID: 1"
     }
 
     def "createAffirmation should save and return the affirmation"() {
@@ -66,6 +91,7 @@ class AffirmationServiceTest extends Specification {
         then:
         1 * affirmationRepository.save(_ as Affirmation) >> { Affirmation affirmation ->
             assert affirmation.text == "New affirmation"
+            assert affirmation.id == null // New entity
             return savedAffirmation
         }
         
@@ -79,7 +105,7 @@ class AffirmationServiceTest extends Specification {
         def now = LocalDateTime.now()
         def existingAffirmation = new Affirmation(id: 1L, text: "Old text", createdAt: now, updatedAt: now)
         def requestDto = new AffirmationRequestDto("Updated text")
-        def updatedAffirmation = new Affirmation(id: 1L, text: "Updated text", createdAt: now, updatedAt: now)
+        def updatedAffirmation = new Affirmation(id: 1L, text: "Updated text", createdAt: now, updatedAt: now.plusMinutes(1))
         
         affirmationRepository.findById(1L) >> Optional.of(existingAffirmation)
         
@@ -90,6 +116,8 @@ class AffirmationServiceTest extends Specification {
         1 * affirmationRepository.save(_ as Affirmation) >> { Affirmation affirmation ->
             assert affirmation.id == 1L
             assert affirmation.text == "Updated text"
+            assert affirmation.createdAt == now // Should preserve original creation time
+            assert affirmation.updatedAt.isAfter(now) // Should update timestamp
             return updatedAffirmation
         }
         
@@ -107,7 +135,8 @@ class AffirmationServiceTest extends Specification {
         affirmationService.updateAffirmation(1L, requestDto)
 
         then:
-        thrown(NoSuchElementException)
+        def ex = thrown(NoSuchElementException)
+        ex.message == "Affirmation not found with ID: 1"
         0 * affirmationRepository.save(_)
     }
     
@@ -130,7 +159,32 @@ class AffirmationServiceTest extends Specification {
         affirmationService.deleteAffirmation(1L)
         
         then:
-        thrown(NoSuchElementException)
+        def ex = thrown(NoSuchElementException)
+        ex.message == "Affirmation not found with ID: 1"
         0 * affirmationRepository.deleteById(_)
+    }
+
+    def "should handle empty repository"() {
+        given:
+        affirmationRepository.findAll() >> []
+
+        when:
+        def result = affirmationService.getAllAffirmations()
+
+        then:
+        result.isEmpty()
+    }
+
+    def "should handle invalid sort parameter"() {
+        given:
+        def affirmations = [new Affirmation(id: 1L, text: "Test")]
+        affirmationRepository.findAll() >> affirmations
+
+        when:
+        def result = affirmationService.getAllAffirmations("invalidSort")
+
+        then:
+        result.size() == 1
+        // Should default to createdAt desc
     }
 }
