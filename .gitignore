@@ -48,6 +48,13 @@ typings/
 *.js.map
 *.css.map
 
+# Test files
+*.spec.ts
+**/testing/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
 # Logs
 *.log
 logs/

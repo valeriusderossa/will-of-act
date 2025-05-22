@@ -10,5 +10,10 @@ export const routes: Routes = [
     path: 'affirmations',
     loadChildren: () => import('./features/affirmations/affiramtions.routes')
       .then(r => r.AFFIRMATION_ROUTES)
+  },
+  {
+    path: 'sentences',
+    loadChildren: () => import('./features/sentences/sentences.routes')
+      .then(r => r.SENTENCE_ROUTES)
   }
 ];

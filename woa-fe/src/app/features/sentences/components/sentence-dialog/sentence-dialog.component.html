@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>{{ dialogTitle }}</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="sentenceForm">
+    <mat-form-field>
+      <mat-label>English Text</mat-label>
+      <textarea 
+        matInput 
+        formControlName="englishText" 
+        placeholder="Enter English sentence..."
+        rows="3">
+      </textarea>
+      <mat-error *ngIf="sentenceForm.get('englishText')?.hasError('required')">
+        English text is required
+      </mat-error>
+      <mat-error *ngIf="sentenceForm.get('englishText')?.hasError('minlength')">
+        English text must not be empty
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Polish Text</mat-label>
+      <textarea 
+        matInput 
+        formControlName="polishText" 
+        placeholder="Enter Polish translation..."
+        rows="3">
+      </textarea>
+      <mat-error *ngIf="sentenceForm.get('polishText')?.hasError('required')">
+        Polish text is required
+      </mat-error>
+      <mat-error *ngIf="sentenceForm.get('polishText')?.hasError('minlength')">
+        Polish text must not be empty
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Pronunciation (Optional)</mat-label>
+      <input 
+        matInput 
+        formControlName="pronunciation" 
+        placeholder="Enter pronunciation guide...">
+      <mat-hint>IPA or phonetic notation</mat-hint>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button 
+    mat-raised-button 
+    color="primary" 
+    (click)="onSave()"
+    [disabled]="!sentenceForm.valid">
+    {{ isEdit ? 'Update' : 'Save' }}
+  </button>
+</div>

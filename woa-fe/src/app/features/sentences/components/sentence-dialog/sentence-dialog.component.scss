@@ -1,0 +1,23 @@
+mat-dialog-content {
+  min-width: 500px;
+  min-height: 300px;
+  padding: 20px 0;
+}
+
+mat-form-field {
+  margin-bottom: 16px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+input {
+  font-family: 'Courier New', monospace;
+}
+
+mat-hint {
+  font-size: 12px;
+  color: #666;
+}

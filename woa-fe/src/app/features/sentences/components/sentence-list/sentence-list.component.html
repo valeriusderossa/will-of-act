@@ -1,0 +1,123 @@
+<div class="sentence-list-container">
+  <div class="header">
+    <h1>Language Learning Sentences</h1>
+    <p class="subtitle">Manage English-Polish sentence pairs</p>
+    
+    <!-- Search and Add Section -->
+    <div class="controls">
+      <mat-form-field class="search-field">
+        <mat-label>Search sentences</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="searchText" 
+          (input)="onSearchChange()"
+          placeholder="Search in English or Polish...">
+        <mat-icon matSuffix>search</mat-icon>
+        <button 
+          mat-icon-button 
+          matSuffix 
+          *ngIf="searchText" 
+          (click)="clearSearch()"
+          title="Clear search">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-form-field>
+      
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="openAddDialog()"
+        class="add-button">
+        <mat-icon>add</mat-icon>
+        Add New Sentence
+      </button>
+    </div>
+  </div>
+
+  <!-- Message Display -->
+  <div class="message" *ngIf="message" [ngClass]="{'error': message.includes('Error'), 'success': !message.includes('Error')}">
+    {{ message }}
+  </div>
+
+  <div class="table-container" *ngIf="!loading">
+    <mat-card class="table-card">
+      <table mat-table [dataSource]="filteredSentences">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let sentence">{{ sentence.id }}</td>
+        </ng-container>
+
+        <!-- English Text Column -->
+        <ng-container matColumnDef="englishText">
+          <th mat-header-cell *matHeaderCellDef>English</th>
+          <td mat-cell *matCellDef="let sentence" class="text-cell">
+            <span [title]="sentence.englishText">{{ truncateText(sentence.englishText) }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Polish Text Column -->
+        <ng-container matColumnDef="polishText">
+          <th mat-header-cell *matHeaderCellDef>Polish</th>
+          <td mat-cell *matCellDef="let sentence" class="text-cell">
+            <span [title]="sentence.polishText">{{ truncateText(sentence.polishText) }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Pronunciation Column -->
+        <ng-container matColumnDef="pronunciation">
+          <th mat-header-cell *matHeaderCellDef>Pronunciation</th>
+          <td mat-cell *matCellDef="let sentence" class="pronunciation-cell">
+            <span *ngIf="sentence.pronunciation" class="pronunciation">{{ sentence.pronunciation }}</span>
+            <span *ngIf="!sentence.pronunciation" class="no-pronunciation">—</span>
+          </td>
+        </ng-container>
+
+        <!-- Created At Column -->
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef>Created</th>
+          <td mat-cell *matCellDef="let sentence">{{ formatDate(sentence.createdAt) }}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let sentence">
+            <button 
+              mat-icon-button 
+              color="primary"
+              (click)="openEditDialog(sentence)"
+              title="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button 
+              mat-icon-button 
+              color="warn"
+              (click)="deleteSentence(sentence.id)"
+              title="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <!-- Empty State -->
+      <div class="empty-state" *ngIf="filteredSentences.length === 0 && !loading">
+        <mat-icon class="empty-icon">translate</mat-icon>
+        <h2 *ngIf="!searchText">No sentences yet</h2>
+        <h2 *ngIf="searchText">No sentences found</h2>
+        <p *ngIf="!searchText">Create your first sentence pair to get started!</p>
+        <p *ngIf="searchText">Try a different search term</p>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="loading-container" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+    <p>Loading sentences...</p>
+  </div>
+</div>
