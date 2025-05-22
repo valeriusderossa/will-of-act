@@ -1,46 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
 
-// Import Angular Material theming
-@use '@angular/material' as mat;
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$woa-primary: mat.define-palette(mat.$indigo-palette);
-$woa-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$woa-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$woa-theme: mat.define-light-theme((
-  color: (
-    primary: $woa-primary,
-    accent: $woa-accent,
-    warn: $woa-warn,
-  ),
-  typography: mat.define-typography-config(),
-  density: 0,
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($woa-theme);
+/* Import Angular Material core styles */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 /* Global styles */
-html, body { 
-  height: 100%; 
+html, body {
+  height: 100%;
 }
 
-body { 
-  margin: 0; 
-  font-family: Roboto, "Helvetica Neue", sans-serif; 
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-// Custom SCSS variables
-$primary-color: mat.get-color-from-palette($woa-primary);
-$accent-color: mat.get-color-from-palette($woa-accent);
+/* Utility classes */
+.full-width {
+  width: 100%;
+}
 
-// You can add your custom styles here
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Custom styles for better Material Design integration */
+.mat-mdc-table {
+  width: 100%;
+}
+
+.mat-mdc-header-cell {
+  font-weight: 600 !important;
+}
+
+.mat-mdc-row:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Custom button styles */
+.mat-mdc-raised-button {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Form field improvements */
+.mat-mdc-form-field {
+  width: 100%;
+}

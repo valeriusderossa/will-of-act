@@ -1,1 +1,84 @@
-<p>affirmation-list works!</p>
+<div class="affirmation-list-container">
+  <div class="header">
+    <h1>My Affirmations</h1>
+    <p class="subtitle">Manage your personal affirmations</p>
+
+    <!-- Add Button -->
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openAddDialog()"
+      class="add-button">
+      <mat-icon>add</mat-icon>
+      Add New Affirmation
+    </button>
+  </div>
+
+  <!-- Message Display -->
+  <div class="message" *ngIf="message" [ngClass]="{'error': message.includes('Error'), 'success': !message.includes('Error')}">
+    {{ message }}
+  </div>
+
+  <div class="table-container" *ngIf="!loading">
+    <mat-card class="table-card">
+      <table mat-table [dataSource]="affirmations">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let affirmation">{{ affirmation.id }}</td>
+        </ng-container>
+
+        <!-- Text Column -->
+        <ng-container matColumnDef="text">
+          <th mat-header-cell *matHeaderCellDef>Affirmation</th>
+          <td mat-cell *matCellDef="let affirmation" class="text-cell">
+            <span [title]="affirmation.text">{{ truncateText(affirmation.text) }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Created At Column -->
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef>Created</th>
+          <td mat-cell *matCellDef="let affirmation">{{ formatDate(affirmation.createdAt) }}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let affirmation">
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="openEditDialog(affirmation)"
+              title="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteAffirmation(affirmation.id)"
+              title="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <!-- Empty State -->
+      <div class="empty-state" *ngIf="affirmations.length === 0">
+        <mat-icon class="empty-icon">sentiment_satisfied</mat-icon>
+        <h2>No affirmations yet</h2>
+        <p>Create your first affirmation to get started!</p>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="loading-container" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+    <p>Loading affirmations...</p>
+  </div>
+</div>
