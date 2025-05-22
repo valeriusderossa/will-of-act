@@ -131,7 +131,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Docker.next-level: Compose Deployment">
     <configuration name="AffirmationControllerIntegrationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -208,26 +208,14 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/woa-fe/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Docker.next-level: Compose Deployment" />
       <item itemvalue="Gradle.AffirmationControllerIntegrationTest" />
       <item itemvalue="Gradle.AffirmationServiceTest" />
-      <item itemvalue="npm.start" />
       <item itemvalue="Spring Boot.WoaBeApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="Spring Boot.WoaBeApplication" />
         <item itemvalue="Docker.next-level: Compose Deployment" />
         <item itemvalue="Gradle.AffirmationControllerIntegrationTest" />
