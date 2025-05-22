@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-affirmation-list',
   imports: [],
   templateUrl: './affirmation-list.component.html',
-  styleUrl: './affirmation-list.component.css'
+  styleUrl: './affirmation-list.component.scss'
 })
 export class AffirmationListComponent {
 

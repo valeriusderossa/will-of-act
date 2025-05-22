@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-afiramtion-dialog',
   imports: [],
   templateUrl: './afiramtion-dialog.component.html',
-  styleUrl: './afiramtion-dialog.component.css'
+  styleUrl: './afiramtion-dialog.component.scss'
 })
 export class AfiramtionDialogComponent {
 
