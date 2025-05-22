@@ -21,13 +21,7 @@ class SentenceController(private val sentenceService: SentenceService) {
         return ResponseEntity.ok(sentences)
     }
     
-    @GetMapping("/summaries")
-    fun getAllSentenceSummaries(
-        @RequestParam(required = false, defaultValue = "createdAt") sortBy: String
-    ): ResponseEntity<List<SentenceSummaryDto>> {
-        val summaries = sentenceService.getAllSentenceSummaries(sortBy)
-        return ResponseEntity.ok(summaries)
-    }
+
 
     @GetMapping("/{id}")
     fun getSentenceById(@PathVariable id: Long): ResponseEntity<SentenceResponseDto> {
@@ -38,26 +32,7 @@ class SentenceController(private val sentenceService: SentenceService) {
         }
     }
 
-    @GetMapping("/random")
-    fun getRandomSentence(): ResponseEntity<SentenceResponseDto> {
-        return try {
-            ResponseEntity.ok(sentenceService.getRandomSentence())
-        } catch (e: NoSuchElementException) {
-            ResponseEntity.notFound().build()
-        }
-    }
 
-    @GetMapping("/category/{category}")
-    fun getSentencesByCategory(@PathVariable category: String): ResponseEntity<List<SentenceResponseDto>> {
-        val sentences = sentenceService.getSentencesByCategory(category)
-        return ResponseEntity.ok(sentences)
-    }
-
-    @GetMapping("/difficulty/{difficultyLevel}")
-    fun getSentencesByDifficultyLevel(@PathVariable difficultyLevel: String): ResponseEntity<List<SentenceResponseDto>> {
-        val sentences = sentenceService.getSentencesByDifficultyLevel(difficultyLevel)
-        return ResponseEntity.ok(sentences)
-    }
 
     @GetMapping("/search")
     fun searchSentences(@RequestParam searchText: String): ResponseEntity<List<SentenceResponseDto>> {
@@ -65,14 +40,7 @@ class SentenceController(private val sentenceService: SentenceService) {
         return ResponseEntity.ok(sentences)
     }
 
-    @GetMapping("/category/{category}/difficulty/{difficultyLevel}")
-    fun getSentencesByCategoryAndDifficultyLevel(
-        @PathVariable category: String,
-        @PathVariable difficultyLevel: String
-    ): ResponseEntity<List<SentenceResponseDto>> {
-        val sentences = sentenceService.getSentencesByCategoryAndDifficultyLevel(category, difficultyLevel)
-        return ResponseEntity.ok(sentences)
-    }
+
 
     @PostMapping
     fun createSentence(@RequestBody requestDto: SentenceRequestDto): ResponseEntity<SentenceResponseDto> {

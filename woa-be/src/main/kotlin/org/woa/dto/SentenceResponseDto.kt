@@ -14,10 +14,7 @@ data class SentenceResponseDto(
     override val englishText: String,
     override val polishText: String,
     val pronunciation: String?,
-    val viewCount: Int,
-    val category: String?,
-    val difficultyLevel: String?,
-    
+
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     val createdAt: LocalDateTime,
     

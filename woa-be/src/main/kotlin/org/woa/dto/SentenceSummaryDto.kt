@@ -13,9 +13,7 @@ data class SentenceSummaryDto(
     val id: Long?,
     override val englishText: String,
     override val polishText: String,
-    val category: String?,
-    val difficultyLevel: String?,
-    
+
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     val createdAt: LocalDateTime
 ) : BaseSentenceDto()

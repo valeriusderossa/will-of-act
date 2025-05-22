@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.woa.dto.AffirmationRequestDto
 import org.woa.dto.AffirmationResponseDto
-import org.woa.dto.AffirmationSummaryDto
 import org.woa.service.AffirmationService
 import java.util.*
 
@@ -21,13 +20,6 @@ class AffirmationController(private val affirmationService: AffirmationService) 
         return ResponseEntity.ok(affirmations)
     }
 
-    @GetMapping("/summaries")
-    fun getAllAffirmationSummaries(
-        @RequestParam(required = false, defaultValue = "createdAt") sortBy: String
-    ): ResponseEntity<List<AffirmationSummaryDto>> {
-        val summaries = affirmationService.getAllAffirmationSummaries(sortBy)
-        return ResponseEntity.ok(summaries)
-    }
 
     @GetMapping("/{id}")
     fun getAffirmationById(@PathVariable id: Long): ResponseEntity<AffirmationResponseDto> {

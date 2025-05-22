@@ -11,6 +11,4 @@ data class SentenceRequestDto(
     override val englishText: String,
     override val polishText: String,
     val pronunciation: String? = null,
-    val category: String? = null,
-    val difficultyLevel: String? = null
 ) : BaseSentenceDto()
