@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'affirmations',
-    loadChildren: () => import('./features/affirmations/affiramtions.routes')
+    loadChildren: () => import('./features/affirmations/affirmations.routes')
       .then(r => r.AFFIRMATION_ROUTES)
   },
   {

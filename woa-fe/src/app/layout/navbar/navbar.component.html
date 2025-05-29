@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="navbar">
+  <button 
+    mat-icon-button 
+    (click)="onToggleSidebar()"
+    class="menu-button"
+    aria-label="Toggle sidebar">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <div class="brand">
+    <mat-icon class="brand-icon">psychology</mat-icon>
+    <span class="brand-text">Will of Act</span>
+  </div>
+  
+  <span class="spacer"></span>
+  
+  <div class="toolbar-actions">
+    <button mat-icon-button aria-label="Settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Profile">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

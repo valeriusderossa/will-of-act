@@ -1,0 +1,71 @@
+<mat-sidenav-container class="sidebar-container">
+  <mat-sidenav 
+    #sidenav
+    [opened]="isOpen"
+    [mode]="'over'"
+    [position]="'start'"
+    class="sidebar"
+    (closedStart)="onCloseSidebar()">
+    
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <mat-icon class="brand-icon">psychology</mat-icon>
+        <div class="brand-info">
+          <h3 class="brand-title">Will of Act</h3>
+          <p class="brand-subtitle">Personal Growth & Learning</p>
+        </div>
+      </div>
+      <button 
+        mat-icon-button 
+        (click)="onCloseSidebar()"
+        class="close-button"
+        aria-label="Close sidebar">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="sidebar-content">
+      <nav class="navigation">
+        <h4 class="nav-section-title">Main Features</h4>
+        <mat-nav-list>
+          <mat-list-item 
+            *ngFor="let item of navigationItems"
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            (click)="onNavigate()"
+            class="nav-item">
+            <mat-icon matListItemIcon class="nav-icon">{{ item.icon }}</mat-icon>
+            <div matListItemTitle class="nav-content">
+              <span class="nav-label">{{ item.label }}</span>
+              <span class="nav-description">{{ item.description }}</span>
+            </div>
+          </mat-list-item>
+        </mat-nav-list>
+      </nav>
+
+      <mat-divider></mat-divider>
+
+      <div class="sidebar-footer">
+        <div class="app-info">
+          <h5>Quick Stats</h5>
+          <div class="stats">
+            <div class="stat-item">
+              <mat-icon>favorite</mat-icon>
+              <span>Personal Growth</span>
+            </div>
+            <div class="stat-item">
+              <mat-icon>translate</mat-icon>
+              <span>Language Learning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
