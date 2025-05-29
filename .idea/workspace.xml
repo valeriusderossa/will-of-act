@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f4c11d81-7a99-4bee-9672-7c3fa6a26612" name="Changes" comment="added readonly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT_STATUS.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_STATUS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,6 +263,7 @@
       <workItem from="1747923030493" duration="3727000" />
       <workItem from="1747926766472" duration="1995000" />
       <workItem from="1747940364335" duration="607000" />
+      <workItem from="1747985904123" duration="149000" />
     </task>
     <task id="LOCAL-00001" summary="working app">
       <option name="closed" value="true" />
