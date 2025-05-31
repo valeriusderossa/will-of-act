@@ -1,4 +1,10 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# =============================================================================
+# ANGULAR FRONTEND SPECIFIC GITIGNORE
+# =============================================================================
+
+# =============================================================================
+# ANGULAR BUILD OUTPUT
+# =============================================================================
 
 # Compiled output
 /dist
@@ -6,19 +12,66 @@
 /out-tsc
 /bazel-out
 
-# Node
+# Angular build system
+/.angular/cache
+/.angular/
+
+# =============================================================================
+# NODE.JS / NPM / YARN
+# =============================================================================
+
+# Dependencies
 /node_modules
 npm-debug.log
 yarn-error.log
+yarn-debug.log
+pnpm-debug.log
 
-# IDEs and editors
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Yarn Integrity file
+.yarn-integrity
+
+# =============================================================================
+# ANGULAR DEVELOPMENT
+# =============================================================================
+
+# Angular CLI cache
+.sass-cache/
+/connect.lock
+/libpeerconnection.log
+testem.log
+/typings
+
+# Angular testing
+/coverage
+*.lcov
+
+# Angular build artifacts
+*.js.map
+*.css.map
+
+# Angular environment files (keep examples)
+/src/environments/environment.local.ts
+/src/environments/environment.dev.ts
+/src/environments/environment.staging.ts
+
+# =============================================================================
+# IDEs AND EDITORS
+# =============================================================================
+
+# IntelliJ IDEA
 .idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+*.iml
+*.ipr
+*.iws
 
 # Visual Studio Code
 .vscode/*
@@ -28,15 +81,211 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+# Other editors
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.swp
+*.swo
+*~
 
-# System files
+# =============================================================================
+# OPERATING SYSTEM FILES
+# =============================================================================
+
+# macOS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =============================================================================
+# TESTING
+# =============================================================================
+
+# Unit testing
+/coverage
+/*.lcov
+
+# E2E testing
+/e2e/reports/
+/e2e/screenshots/
+/e2e/videos/
+
+# Jest
+jest-html-reporters-attach/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# =============================================================================
+# DEVELOPMENT TOOLS
+# =============================================================================
+
+# Storybook
+storybook-static/
+.storybook/static/
+
+# Bundle analyzer
+bundle-report.html
+stats.json
+
+# Lighthouse reports
+lighthouse-report.html
+lighthouse/
+
+# =============================================================================
+# ANGULAR SPECIFIC TOOLS
+# =============================================================================
+
+# Angular DevKit
+.angular-devkit/
+
+# Angular Universal
+.angular/prerender/
+
+# Angular PWA
+/src/manifest.json.bak
+
+# Angular i18n
+/src/locale/messages.*.xlf.bak
+
+# =============================================================================
+# TEMPORARY & CACHE FILES
+# =============================================================================
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Log files
+*.log
+logs/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# =============================================================================
+# ENVIRONMENT & CONFIG
+# =============================================================================
+
+# Environment files (except examples)
+.env
+.env.*
+!.env.example
+
+# Local configuration overrides
+src/app/config/config.local.ts
+proxy.conf.local.json
+
+# =============================================================================
+# ASSETS & UPLOADS
+# =============================================================================
+
+# User uploads (if any)
+/src/assets/uploads/
+/src/assets/temp/
+
+# Generated assets
+/src/assets/generated/
+
+# Large media files that shouldn't be in git
+/src/assets/**/*.mp4
+/src/assets/**/*.mov
+/src/assets/**/*.avi
+/src/assets/**/*.mkv
+
+# =============================================================================
+# DOCUMENTATION
+# =============================================================================
+
+# Generated documentation
+/docs/build/
+/docs/dist/
+/compodoc/
+
+# =============================================================================
+# SECURITY
+# =============================================================================
+
+# Security keys
+*.pem
+*.key
+*.crt
+src/assets/keys/
+
+# Firebase config (if using)
+.firebaserc.local
+firebase-debug.log
+
+# =============================================================================
+# PACKAGE MANAGER
+# =============================================================================
+
+# Keep main lock file but ignore temporary ones
+package-lock.json.bak
+yarn.lock.bak
+
+# =============================================================================
+# ANGULAR SPECIFIC IGNORES
+# =============================================================================
+
+# Angular Material theme files (if auto-generated)
+/src/styles/themes/generated/
+
+# Angular Service Worker
+/src/ngsw-worker.js.bak
+
+# Angular build info
+.angular-build-info.json
+
+# Angular workspace cache
+.nx/cache
+
+# =============================================================================
+# PERFORMANCE & PROFILING
+# =============================================================================
+
+# Bundle analysis
+webpack-bundle-analyzer-report.html
+source-map-explorer-output/
+
+# Performance monitoring
+*.perf
+lighthouse-*.json
+
+# =============================================================================
+# MISC
+# =============================================================================
+
+# OS specific
+Thumbs.db:encryptable
+ehthumbs_vista.db
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# Backup files
+*.bak
+*.backup
+*.old
