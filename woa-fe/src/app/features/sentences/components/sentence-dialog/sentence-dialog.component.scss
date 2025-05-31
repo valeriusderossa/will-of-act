@@ -1,23 +1,20 @@
+// Component-specific styles only
+// Global dialog styles are already defined in styles.scss
+
 mat-dialog-content {
   min-width: 500px;
   min-height: 300px;
-  padding: 20px 0;
-}
-
-mat-form-field {
-  margin-bottom: 16px;
 }
 
 textarea {
-  resize: vertical;
   min-height: 60px;
 }
 
 input {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
 }
 
 mat-hint {
   font-size: 12px;
-  color: #666;
+  color: var(--text-secondary);
 }

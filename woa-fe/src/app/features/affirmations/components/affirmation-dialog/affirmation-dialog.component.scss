@@ -1,14 +1,11 @@
+// Component-specific styles only
+// Global dialog styles are already defined in styles.scss
+
 mat-dialog-content {
   min-width: 400px;
   min-height: 200px;
-  padding: 20px 0;
-}
-
-mat-form-field {
-  margin-bottom: 16px;
 }
 
 textarea {
-  resize: vertical;
   min-height: 80px;
 }

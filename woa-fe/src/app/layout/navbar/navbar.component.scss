@@ -1,61 +1,13 @@
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+// Component-specific styles only
+// Global .navbar styles are already defined in styles.scss
 
 .menu-button {
-  margin-right: 16px;
+  margin-right: var(--spacing-md);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-
-  .brand-icon {
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
-  }
-
-  .brand-text {
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-  }
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.toolbar-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-// Mobile responsiveness
-@media (max-width: 768px) {
-  .brand-text {
-    display: none;
-  }
-  
-  .navbar {
-    padding: 0 8px;
-  }
-  
+// Mobile responsiveness using global breakpoints
+@media (max-width: var(--breakpoint-mobile)) {
   .menu-button {
-    margin-right: 8px;
+    margin-right: var(--spacing-sm);
   }
 }
