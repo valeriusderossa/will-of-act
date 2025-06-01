@@ -213,6 +213,19 @@ logs/
 *.mv.db
 *.trace.db
 
+# PostgreSQL dumps
+*.pgdump
+*.backup
+
+# MySQL dumps
+*.mysql
+*.mysqldump
+
+# Database connection configs
+database.local.*
+db.local.*
+datasource.local.*
+
 # =============================================================================
 # ENVIRONMENT & CONFIGURATION
 # =============================================================================
@@ -331,6 +344,23 @@ swagger-ui/
 # Angular Storybook
 .storybook/static/
 
+# Database tools
+*.sql.bak
+*.dump
+database-schema/
+schema-exports/
+
+# Development utilities
+dev-tools/
+local-scripts/
+*.dev.sh
+*.dev.bat
+
+# IDE-specific project files
+*.code-workspace
+.fleet/
+.cursor/
+
 # =============================================================================
 # SECURITY & SECRETS
 # =============================================================================
@@ -377,6 +407,37 @@ monitoring/
 # Cache directories
 .cache/
 .parcel-cache/
+
+# Database exports/imports
+*.sql.backup
+database-exports/
+db-backups/
+
+# Migration rollback files
+rollback/
+*.rollback.sql
+
+# Local development data
+seed-data/
+test-data/
+dev-data/
+
+# API documentation
+api-docs/
+swagger-docs/
+postman-collections/local/
+
+# Performance testing
+load-test-results/
+stress-test-results/
+*.jmeter
+
+# Feature toggles
+feature-flags.local.*
+
+# Local quotations/content
+quotations-backup/
+content-exports/
 
 # =============================================================================
 # PACKAGE MANAGERS LOCK FILES
