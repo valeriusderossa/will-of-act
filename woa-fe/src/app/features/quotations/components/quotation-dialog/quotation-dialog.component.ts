@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -7,12 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { QuotationResponse, QuotationRequest } from '../../index';
 
-interface DialogData {
+export interface QuotationDialogData {
   quotation?: QuotationResponse;
   isEdit: boolean;
 }
@@ -28,99 +26,51 @@ interface DialogData {
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    MatIconModule,
-    MatToolbarModule
+    MatNativeDateModule
   ],
   templateUrl: './quotation-dialog.component.html',
   styleUrl: './quotation-dialog.component.scss'
 })
-export class QuotationDialogComponent implements OnInit {
+export class QuotationDialogComponent {
   quotationForm: FormGroup;
-  maxDate = new Date();
 
   private readonly fb = inject(FormBuilder);
   private readonly dialogRef = inject(MatDialogRef<QuotationDialogComponent>);
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: QuotationDialogData) {
     this.quotationForm = this.fb.group({
-      author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
-      quotation: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
-      date: [new Date(), Validators.required]
+      author: [
+        data.quotation?.author || '',
+        [Validators.required, Validators.minLength(1)]
+      ],
+      quotation: [
+        data.quotation?.quotation || '',
+        [Validators.required, Validators.minLength(1)]
+      ],
+      date: [
+        data.quotation ? new Date(data.quotation.date) : new Date(),
+        [Validators.required]
+      ]
     });
   }
 
-  ngOnInit(): void {
-    if (this.data.isEdit && this.data.quotation) {
-      this.populateForm(this.data.quotation);
-    }
-    // Default date is already set in constructor for new quotations
+  get isEdit(): boolean {
+    return this.data.isEdit;
   }
 
-  populateForm(quotation: QuotationResponse): void {
-    this.quotationForm.patchValue({
-      author: quotation.author,
-      quotation: quotation.quotation,
-      date: new Date(quotation.date)
-    });
+  get dialogTitle(): string {
+    return this.isEdit ? 'Edit Quotation' : 'Add New Quotation';
   }
 
-  getTitle(): string {
-    return this.data.isEdit ? 'Edit Quotation' : 'Add New Quotation';
-  }
-
-  getSubmitButtonText(): string {
-    return this.data.isEdit ? 'Update' : 'Create';
-  }
-
-  getFormFieldError(fieldName: string): string {
-    const field = this.quotationForm.get(fieldName);
-    if (field?.errors && field.touched) {
-      if (field.errors['required']) {
-        return `${this.getFieldDisplayName(fieldName)} is required`;
-      }
-      if (field.errors['minlength']) {
-        const requiredLength = field.errors['minlength'].requiredLength;
-        return `${this.getFieldDisplayName(fieldName)} must be at least ${requiredLength} characters`;
-      }
-      if (field.errors['maxlength']) {
-        const requiredLength = field.errors['maxlength'].requiredLength;
-        return `${this.getFieldDisplayName(fieldName)} cannot exceed ${requiredLength} characters`;
-      }
-    }
-    return '';
-  }
-
-  getFieldDisplayName(fieldName: string): string {
-    const displayNames: { [key: string]: string } = {
-      author: 'Author',
-      quotation: 'Quotation',
-      date: 'Date'
-    };
-    return displayNames[fieldName] || fieldName;
-  }
-
-  getCharacterCount(fieldName: string): string {
-    const value = this.quotationForm.get(fieldName)?.value || '';
-    const maxLength = fieldName === 'author' ? 255 : 2000;
-    return `${value.length}/${maxLength}`;
-  }
-
-  onSubmit(): void {
+  onSave(): void {
     if (this.quotationForm.valid) {
       const formValue = this.quotationForm.value;
-      const quotationRequest: QuotationRequest = {
+      const request: QuotationRequest = {
         author: formValue.author.trim(),
         quotation: formValue.quotation.trim(),
         date: this.formatDate(formValue.date)
       };
-
-      this.dialogRef.close(quotationRequest);
-    } else {
-      // Mark all fields as touched to show validation errors
-      Object.keys(this.quotationForm.controls).forEach(key => {
-        this.quotationForm.get(key)?.markAsTouched();
-      });
+      this.dialogRef.close(request);
     }
   }
 
@@ -128,28 +78,7 @@ export class QuotationDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  formatDate(date: Date | string): string {
-    if (!date) return '';
-    const dateObj = typeof date === 'string' ? new Date(date) : date;
-    return dateObj.toISOString().split('T')[0];
-  }
-
-  isFormValid(): boolean {
-    return this.quotationForm.valid;
-  }
-
-  hasUnsavedChanges(): boolean {
-    if (!this.data.isEdit) {
-      return this.quotationForm.dirty;
-    }
-
-    const original = this.data.quotation;
-    const current = this.quotationForm.value;
-
-    return (
-      original?.author !== current.author?.trim() ||
-      original?.quotation !== current.quotation?.trim() ||
-      original?.date !== this.formatDate(current.date)
-    );
+  private formatDate(date: Date): string {
+    return date.toISOString().split('T')[0];
   }
 }
