@@ -180,6 +180,8 @@ woa-fe/storybook-static
 # Gradle
 .gradle/
 build/
+woa-be/build/
+woa-be/.gradle/
 gradle-app.setting
 !gradle-wrapper.jar
 !gradle-wrapper.properties
