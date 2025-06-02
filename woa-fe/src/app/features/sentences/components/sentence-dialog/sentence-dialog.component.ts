@@ -5,8 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
-import { SentenceResponse } from '../../models/sentence.model';
-import { SentenceRequest } from '../../models/sentence-request.model';
+import { SentenceResponse, SentenceRequest } from '../../index';
 
 export interface SentenceDialogData {
   sentence?: SentenceResponse;

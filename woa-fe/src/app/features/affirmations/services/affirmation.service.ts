@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AffirmationResponse, AffirmationSummary } from '../models/affirmation.model';
-import { AffirmationRequest } from '../models/affirmation-request.model';
+import { AffirmationResponse, AffirmationSummary, AffirmationRequest } from '../index';
 
 @Injectable({
   providedIn: 'root'

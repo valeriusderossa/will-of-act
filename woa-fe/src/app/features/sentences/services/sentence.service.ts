@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SentenceResponse, SentenceSummary } from '../models/sentence.model';
-import { SentenceRequest } from '../models/sentence-request.model';
+import { SentenceResponse, SentenceSummary, SentenceRequest } from '../index';
 
 @Injectable({
   providedIn: 'root'

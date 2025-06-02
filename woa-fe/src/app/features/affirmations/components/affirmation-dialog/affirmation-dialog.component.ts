@@ -5,8 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
-import { AffirmationResponse } from '../../models/affirmation.model';
-import { AffirmationRequest } from '../../models/affirmation-request.model';
+import { AffirmationResponse, AffirmationRequest } from '../../index';
 
 export interface AffirmationDialogData {
   affirmation?: AffirmationResponse;

@@ -1,5 +1,4 @@
-import { QuotationResponse, QuotationSummary } from '../models/quotation.model';
-import { QuotationRequest } from '../models/quotation-request.model';
+import { QuotationResponse, QuotationSummary, QuotationRequest } from '../index';
 
 export class QuotationTestData {
   static readonly SAMPLE_QUOTATIONS: QuotationResponse[] = [
@@ -101,21 +100,21 @@ export class QuotationTestData {
   }
 
   static getQuotationsByAuthor(author: string): QuotationResponse[] {
-    return this.SAMPLE_QUOTATIONS.filter(q => 
+    return this.SAMPLE_QUOTATIONS.filter(q =>
       q.author.toLowerCase().includes(author.toLowerCase())
     );
   }
 
   static searchQuotations(searchText: string): QuotationResponse[] {
     const lowerSearchText = searchText.toLowerCase();
-    return this.SAMPLE_QUOTATIONS.filter(q => 
+    return this.SAMPLE_QUOTATIONS.filter(q =>
       q.author.toLowerCase().includes(lowerSearchText) ||
       q.quotation.toLowerCase().includes(lowerSearchText)
     );
   }
 
   static getQuotationsByDateRange(startDate: string, endDate: string): QuotationResponse[] {
-    return this.SAMPLE_QUOTATIONS.filter(q => 
+    return this.SAMPLE_QUOTATIONS.filter(q =>
       q.date >= startDate && q.date <= endDate
     );
   }
@@ -161,7 +160,7 @@ export class QuotationTestData {
   }
 
   static getQuotationsFromYear(year: number): QuotationResponse[] {
-    return this.SAMPLE_QUOTATIONS.filter(q => 
+    return this.SAMPLE_QUOTATIONS.filter(q =>
       new Date(q.date).getFullYear() === year
     );
   }

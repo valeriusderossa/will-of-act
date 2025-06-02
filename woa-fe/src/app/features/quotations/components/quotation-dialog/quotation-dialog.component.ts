@@ -10,8 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { QuotationResponse } from '../../models/quotation.model';
-import { QuotationRequest } from '../../models/quotation-request.model';
+import { QuotationResponse, QuotationRequest } from '../../index';
 
 interface DialogData {
   quotation?: QuotationResponse;
@@ -133,27 +132,6 @@ export class QuotationDialogComponent implements OnInit {
     if (!date) return '';
     const dateObj = typeof date === 'string' ? new Date(date) : date;
     return dateObj.toISOString().split('T')[0];
-  }
-
-  // Suggestions for famous authors
-  getAuthorSuggestions(): string[] {
-    return [
-      'Albert Einstein',
-      'Maya Angelou',
-      'Winston Churchill',
-      'Nelson Mandela',
-      'Martin Luther King Jr.',
-      'Steve Jobs',
-      'Mahatma Gandhi',
-      'Mark Twain',
-      'Oscar Wilde',
-      'Friedrich Nietzsche',
-      'Aristotle',
-      'Plato',
-      'Confucius',
-      'Benjamin Franklin',
-      'Theodore Roosevelt'
-    ];
   }
 
   isFormValid(): boolean {

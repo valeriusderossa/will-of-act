@@ -13,12 +13,12 @@
   <!-- Dialog Content -->
   <div mat-dialog-content class="dialog-content">
     <form [formGroup]="quotationForm" (ngSubmit)="onSubmit()" class="quotation-form">
-      
+
       <!-- Author Field -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Author</mat-label>
-        <input matInput 
-               formControlName="author" 
+        <input matInput
+               formControlName="author"
                placeholder="Enter the author's name"
                maxlength="255">
         <mat-icon matSuffix>person</mat-icon>
@@ -26,25 +26,12 @@
         <mat-error>{{ getFormFieldError('author') }}</mat-error>
       </mat-form-field>
 
-      <!-- Author Suggestions -->
-      <div class="author-suggestions" *ngIf="!quotationForm.get('author')?.value">
-        <span class="suggestions-label">Popular authors:</span>
-        <div class="suggestions-chips">
-          <button type="button" 
-                  mat-stroked-button 
-                  *ngFor="let author of getAuthorSuggestions().slice(0, 5)" 
-                  (click)="quotationForm.patchValue({author: author})"
-                  class="suggestion-chip">
-            {{ author }}
-          </button>
-        </div>
-      </div>
 
       <!-- Quotation Field -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Quotation</mat-label>
-        <textarea matInput 
-                  formControlName="quotation" 
+        <textarea matInput
+                  formControlName="quotation"
                   placeholder="Enter the quotation text"
                   rows="4"
                   maxlength="2000"></textarea>
@@ -57,8 +44,8 @@
       <!-- Date Field -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Quote Date</mat-label>
-        <input matInput 
-               [matDatepicker]="picker" 
+        <input matInput
+               [matDatepicker]="picker"
                formControlName="date"
                [max]="maxDate"
                placeholder="When was this quote said/written?">
@@ -97,8 +84,8 @@
     <button mat-button (click)="onCancel()" type="button">
       Cancel
     </button>
-    <button mat-raised-button 
-            color="primary" 
+    <button mat-raised-button
+            color="primary"
             (click)="onSubmit()"
             [disabled]="!isFormValid()"
             type="button">

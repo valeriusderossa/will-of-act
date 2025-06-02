@@ -9,10 +9,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { SentenceService } from '../../services/sentence.service';
-import { SentenceResponse } from '../../models/sentence.model';
-import { SentenceRequest } from '../../models/sentence-request.model';
-import { SentenceDialogComponent } from '../sentence-dialog/sentence-dialog.component';
+import {
+  SentenceService,
+  SentenceResponse,
+  SentenceRequest,
+  SentenceDialogComponent
+} from '../../index';
 
 @Component({
   selector: 'app-sentence-list',

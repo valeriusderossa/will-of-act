@@ -5,44 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cbd69-0d16-4267-b14c-c35147a640cf" name="Changes" comment="working app">
-      <change beforePath="$PROJECT_DIR$/woa-be/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/woa-be/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/.gradle/8.13/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/8.13/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/woa-be/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/counters.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/counters.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/file-to-id.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/file-to-id.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build/kotlin/compileKotlin/local-state/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-dialog/affirmation-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-dialog/affirmation-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/services/affirmation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/services/affirmation.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-dialog/quotation-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-dialog/quotation-dialog.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-dialog/quotation-dialog.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-dialog/quotation-dialog.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-dialog/quotation-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-dialog/quotation-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/services/quotation.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/services/quotation.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/services/quotation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/services/quotation.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/testing/quotation-test-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/testing/quotation-test-data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-dialog/sentence-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-dialog/sentence-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/services/sentence.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/services/sentence.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +71,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "Spring Boot.WoaBeApplication.executor": "Run",
+    "Spring Boot.WoaBeApplication.executor": "Debug",
     "git-widget-placeholder": "test",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
@@ -106,7 +85,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.WoaBeApplication">
+  <component name="RunManager" selected="npm.start">
     <configuration name="WoaBeApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.woa.WoaBeApplicationKt" />
       <module name="woa-be.main" />
@@ -156,8 +135,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.WoaBeApplication" />
         <item itemvalue="npm.start" />
+        <item itemvalue="Spring Boot.WoaBeApplication" />
         <item itemvalue="Kotlin.WoaBeApplicationKt" />
         <item itemvalue="npm.ng" />
       </list>
@@ -207,7 +186,7 @@
       <workItem from="1748728884120" duration="58000" />
       <workItem from="1748788949898" duration="1282000" />
       <workItem from="1748793642654" duration="7689000" />
-      <workItem from="1748883194987" duration="1778000" />
+      <workItem from="1748883194987" duration="4644000" />
     </task>
     <task id="LOCAL-00003" summary="working app">
       <option name="closed" value="true" />
@@ -233,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748884886508</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="working app">
+      <option name="closed" value="true" />
+      <created>1748885993751</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748885993751</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

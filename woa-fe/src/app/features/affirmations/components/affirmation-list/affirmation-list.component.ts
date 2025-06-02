@@ -6,10 +6,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
-import { AffirmationService } from '../../services/affirmation.service';
-import { AffirmationResponse } from '../../models/affirmation.model';
-import { AffirmationRequest } from '../../models/affirmation-request.model';
-import { AffirmationDialogComponent } from '../affirmation-dialog/affirmation-dialog.component';
+import {
+  AffirmationService,
+  AffirmationResponse,
+  AffirmationRequest,
+  AffirmationDialogComponent
+} from '../../index';
 
 @Component({
   selector: 'app-affirmation-list',

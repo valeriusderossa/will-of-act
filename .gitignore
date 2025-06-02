@@ -176,7 +176,6 @@ woa-fe/storybook-static
 **/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
-!**/src/test/**/target/
 
 # Gradle
 .gradle/
@@ -185,7 +184,6 @@ gradle-app.setting
 !gradle-wrapper.jar
 !gradle-wrapper.properties
 !**/src/main/**/build/
-!**/src/test/**/build/
 
 # Spring Boot
 *.jar
@@ -260,6 +258,13 @@ application-*.yml
 # TESTING
 # =============================================================================
 
+# Test files and directories (if accidentally created)
+*.spec.ts
+*.test.ts
+**/testing/
+**/*test*/
+**/*spec*/
+
 # Test results
 /test-results/
 /test-output/
@@ -281,6 +286,10 @@ test-output/
 # JUnit
 **/surefire-reports/
 **/failsafe-reports/
+
+# Karma
+karma.conf.js
+karma.conf.ts
 
 # =============================================================================
 # BUILD & DEPLOYMENT
