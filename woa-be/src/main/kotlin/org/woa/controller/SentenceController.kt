@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.woa.dto.SentenceRequestDto
 import org.woa.dto.SentenceResponseDto
-import org.woa.dto.SentenceSummaryDto
 import org.woa.service.SentenceService
 import java.util.*
 
@@ -14,14 +13,10 @@ import java.util.*
 class SentenceController(private val sentenceService: SentenceService) {
 
     @GetMapping
-    fun getAllSentences(
-        @RequestParam(required = false, defaultValue = "createdAt") sortBy: String
-    ): ResponseEntity<List<SentenceResponseDto>> {
-        val sentences = sentenceService.getAllSentences(sortBy)
+    fun getAllSentences(): ResponseEntity<List<SentenceResponseDto>> {
+        val sentences = sentenceService.getAllSentences()
         return ResponseEntity.ok(sentences)
     }
-    
-
 
     @GetMapping("/{id}")
     fun getSentenceById(@PathVariable id: Long): ResponseEntity<SentenceResponseDto> {
@@ -31,16 +26,6 @@ class SentenceController(private val sentenceService: SentenceService) {
             ResponseEntity.notFound().build()
         }
     }
-
-
-
-    @GetMapping("/search")
-    fun searchSentences(@RequestParam searchText: String): ResponseEntity<List<SentenceResponseDto>> {
-        val sentences = sentenceService.searchSentences(searchText)
-        return ResponseEntity.ok(sentences)
-    }
-
-
 
     @PostMapping
     fun createSentence(@RequestBody requestDto: SentenceRequestDto): ResponseEntity<SentenceResponseDto> {

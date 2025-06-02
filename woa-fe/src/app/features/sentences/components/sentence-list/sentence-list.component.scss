@@ -1,73 +1,74 @@
-// Component-specific styles only
-// Use global classes: .page-container, .page-header, .message, .empty-state, .loading-container
+// Keep minimal - let Angular Material handle most styling
+.sentence-list-container {
+  padding: 16px;
+}
 
-.controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
+.header {
+  margin-bottom: 24px;
 
-  .search-field {
-    flex: 1;
-    min-width: 300px;
-    max-width: 500px;
+  h1 {
+    margin: 0 0 8px 0;
   }
 
-  .add-button {
-    white-space: nowrap;
-
-    mat-icon {
-      margin-right: var(--spacing-sm);
-    }
+  .subtitle {
+    margin: 0 0 16px 0;
+    color: #666;
   }
 }
 
-.table-container {
-  .mat-column-id {
-    flex: 0 0 60px;
+.message {
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 4px;
+
+  &.success {
+    background-color: #d4edda;
+    color: #155724;
   }
 
-  .mat-column-englishText {
-    flex: 1 1 auto;
-  }
-
-  .mat-column-polishText {
-    flex: 1 1 auto;
-  }
-
-  .mat-column-pronunciation {
-    flex: 0 0 150px;
-  }
-
-  .mat-column-createdAt {
-    flex: 0 0 120px;
-  }
-
-  .mat-column-actions {
-    flex: 0 0 120px;
+  &.error {
+    background-color: #f8d7da;
+    color: #721c24;
   }
 }
 
-// Mobile-specific overrides
-@media (max-width: var(--breakpoint-mobile)) {
-  .controls {
-    flex-direction: column;
-    align-items: stretch;
+.table-card {
+  margin-bottom: 16px;
+}
 
-    .search-field {
-      min-width: unset;
-      max-width: unset;
-    }
+.text-cell {
+  max-width: 300px;
+}
 
-    .add-button {
-      width: 100%;
-    }
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+
+  .empty-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: #ccc;
+    margin-bottom: 16px;
   }
 
-  .table-container {
-    .mat-column-pronunciation {
-      flex: 0 0 100px;
-    }
+  h2 {
+    margin: 0 0 8px 0;
+    color: #666;
+  }
+
+  p {
+    margin: 0;
+    color: #999;
+  }
+}
+
+.loading-container {
+  text-align: center;
+  padding: 48px 16px;
+
+  p {
+    margin-top: 16px;
+    color: #666;
   }
 }

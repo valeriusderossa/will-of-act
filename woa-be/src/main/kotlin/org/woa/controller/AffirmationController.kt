@@ -13,13 +13,10 @@ import java.util.*
 class AffirmationController(private val affirmationService: AffirmationService) {
 
     @GetMapping
-    fun getAllAffirmations(
-        @RequestParam(required = false, defaultValue = "createdAt") sortBy: String
-    ): ResponseEntity<List<AffirmationResponseDto>> {
-        val affirmations = affirmationService.getAllAffirmations(sortBy)
+    fun getAllAffirmations(): ResponseEntity<List<AffirmationResponseDto>> {
+        val affirmations = affirmationService.getAllAffirmations()
         return ResponseEntity.ok(affirmations)
     }
-
 
     @GetMapping("/{id}")
     fun getAffirmationById(@PathVariable id: Long): ResponseEntity<AffirmationResponseDto> {

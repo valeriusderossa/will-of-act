@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.woa.dto.SentenceRequestDto
 import org.woa.dto.SentenceResponseDto
-import org.woa.dto.SentenceSummaryDto
 import org.woa.entity.Sentence
 import org.woa.repository.SentenceRepository
 import java.time.LocalDateTime
@@ -13,16 +12,8 @@ import java.util.*
 @Service
 class SentenceService(private val sentenceRepository: SentenceRepository) {
 
-    fun getAllSentences(sortBy: String = "createdAt"): List<SentenceResponseDto> {
-        val sentences = sentenceRepository.findAll()
-        
-        val sortedSentences = when (sortBy) {
-            "createdAt" -> sentences.sortedByDescending { it.createdAt }
-            "createdAtAsc" -> sentences.sortedBy { it.createdAt }
-            else -> sentences.sortedByDescending { it.createdAt }
-        }
-        
-        return sortedSentences.map { it.toResponseDto() }
+    fun getAllSentences(): List<SentenceResponseDto> {
+        return sentenceRepository.findAll().map { it.toResponseDto() }
     }
 
     @Transactional
@@ -65,12 +56,6 @@ class SentenceService(private val sentenceRepository: SentenceRepository) {
             throw NoSuchElementException("Sentence not found with ID: $id")
         }
         sentenceRepository.deleteById(id)
-    }
-
-    fun searchSentences(searchText: String): List<SentenceResponseDto> {
-        return sentenceRepository.findByEnglishTextContainingIgnoreCaseOrPolishTextContainingIgnoreCase(
-            searchText, searchText
-        ).map { it.toResponseDto() }
     }
 
     private fun Sentence.toResponseDto(): SentenceResponseDto {

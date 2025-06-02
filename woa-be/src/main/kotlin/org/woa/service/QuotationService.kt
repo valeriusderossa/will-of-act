@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.woa.dto.QuotationRequestDto
 import org.woa.dto.QuotationResponseDto
-import org.woa.dto.QuotationSummaryDto
 import org.woa.entity.Quotation
 import org.woa.repository.QuotationRepository
 import java.time.LocalDateTime
@@ -13,36 +12,8 @@ import java.util.*
 @Service
 class QuotationService(private val quotationRepository: QuotationRepository) {
 
-    fun getAllQuotations(sortBy: String = "createdAt"): List<QuotationResponseDto> {
-        val quotations = quotationRepository.findAll()
-        
-        val sortedQuotations = when (sortBy) {
-            "createdAt" -> quotations.sortedByDescending { it.createdAt }
-            "createdAtAsc" -> quotations.sortedBy { it.createdAt }
-            "author" -> quotations.sortedBy { it.author }
-            "authorDesc" -> quotations.sortedByDescending { it.author }
-            "date" -> quotations.sortedBy { it.date }
-            "dateDesc" -> quotations.sortedByDescending { it.date }
-            else -> quotations.sortedByDescending { it.createdAt }
-        }
-        
-        return sortedQuotations.map { it.toResponseDto() }
-    }
-
-    fun getAllQuotationsSummary(sortBy: String = "createdAt"): List<QuotationSummaryDto> {
-        val quotations = quotationRepository.findAll()
-        
-        val sortedQuotations = when (sortBy) {
-            "createdAt" -> quotations.sortedByDescending { it.createdAt }
-            "createdAtAsc" -> quotations.sortedBy { it.createdAt }
-            "author" -> quotations.sortedBy { it.author }
-            "authorDesc" -> quotations.sortedByDescending { it.author }
-            "date" -> quotations.sortedBy { it.date }
-            "dateDesc" -> quotations.sortedByDescending { it.date }
-            else -> quotations.sortedByDescending { it.createdAt }
-        }
-        
-        return sortedQuotations.map { it.toSummaryDto() }
+    fun getAllQuotations(): List<QuotationResponseDto> {
+        return quotationRepository.findAll().map { it.toResponseDto() }
     }
 
     @Transactional
@@ -95,18 +66,6 @@ class QuotationService(private val quotationRepository: QuotationRepository) {
             date = this.date,
             createdAt = this.createdAt,
             updatedAt = this.updatedAt
-        )
-    }
-
-    private fun Quotation.toSummaryDto(): QuotationSummaryDto {
-        return QuotationSummaryDto(
-            id = this.id,
-            author = this.author,
-            quotationPreview = if (this.quotation.length > 100) 
-                this.quotation.take(97) + "..." 
-            else 
-                this.quotation,
-            date = this.date
         )
     }
 }

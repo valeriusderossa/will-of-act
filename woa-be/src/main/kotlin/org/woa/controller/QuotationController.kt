@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.woa.dto.QuotationRequestDto
 import org.woa.dto.QuotationResponseDto
-import org.woa.dto.QuotationSummaryDto
 import org.woa.service.QuotationService
 import java.util.*
 
@@ -14,18 +13,8 @@ import java.util.*
 class QuotationController(private val quotationService: QuotationService) {
 
     @GetMapping
-    fun getAllQuotations(
-        @RequestParam(required = false, defaultValue = "createdAt") sortBy: String
-    ): ResponseEntity<List<QuotationResponseDto>> {
-        val quotations = quotationService.getAllQuotations(sortBy)
-        return ResponseEntity.ok(quotations)
-    }
-
-    @GetMapping("/summary")
-    fun getAllQuotationsSummary(
-        @RequestParam(required = false, defaultValue = "createdAt") sortBy: String
-    ): ResponseEntity<List<QuotationSummaryDto>> {
-        val quotations = quotationService.getAllQuotationsSummary(sortBy)
+    fun getAllQuotations(): ResponseEntity<List<QuotationResponseDto>> {
+        val quotations = quotationService.getAllQuotations()
         return ResponseEntity.ok(quotations)
     }
 
