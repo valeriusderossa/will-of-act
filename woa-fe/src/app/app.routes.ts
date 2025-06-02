@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/affirmations',
+    redirectTo: '/quotations',
     pathMatch: 'full'
   },
   {
@@ -15,5 +15,10 @@ export const routes: Routes = [
     path: 'sentences',
     loadChildren: () => import('./features/sentences/sentences.routes')
       .then(r => r.SENTENCE_ROUTES)
+  },
+  {
+    path: 'quotations',
+    loadChildren: () => import('./features/quotations/quotations.routes')
+      .then(r => r.QUOTATION_ROUTES)
   }
 ];

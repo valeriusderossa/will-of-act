@@ -7,7 +7,6 @@ import org.woa.dto.QuotationResponseDto
 import org.woa.dto.QuotationSummaryDto
 import org.woa.entity.Quotation
 import org.woa.repository.QuotationRepository
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 
@@ -86,27 +85,6 @@ class QuotationService(private val quotationRepository: QuotationRepository) {
             throw NoSuchElementException("Quotation not found with ID: $id")
         }
         quotationRepository.deleteById(id)
-    }
-
-    fun searchQuotations(searchText: String): List<QuotationResponseDto> {
-        return quotationRepository.findByAuthorContainingIgnoreCaseOrQuotationContainingIgnoreCase(
-            searchText, searchText
-        ).map { it.toResponseDto() }
-    }
-
-    fun searchQuotationsByAuthor(author: String): List<QuotationResponseDto> {
-        return quotationRepository.findByAuthorIgnoreCase(author)
-            .map { it.toResponseDto() }
-    }
-
-    fun getQuotationsByDate(date: LocalDate): List<QuotationResponseDto> {
-        return quotationRepository.findByDate(date)
-            .map { it.toResponseDto() }
-    }
-
-    fun getQuotationsByDateRange(startDate: LocalDate, endDate: LocalDate): List<QuotationResponseDto> {
-        return quotationRepository.findByDateBetween(startDate, endDate)
-            .map { it.toResponseDto() }
     }
 
     private fun Quotation.toResponseDto(): QuotationResponseDto {

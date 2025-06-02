@@ -1,0 +1,109 @@
+<div class="quotation-dialog">
+  <!-- Dialog Header -->
+  <mat-toolbar class="dialog-header">
+    <mat-toolbar-row>
+      <span>{{ getTitle() }}</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="onCancel()" matTooltip="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!-- Dialog Content -->
+  <div mat-dialog-content class="dialog-content">
+    <form [formGroup]="quotationForm" (ngSubmit)="onSubmit()" class="quotation-form">
+      
+      <!-- Author Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Author</mat-label>
+        <input matInput 
+               formControlName="author" 
+               placeholder="Enter the author's name"
+               maxlength="255">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-hint align="end">{{ getCharacterCount('author') }}</mat-hint>
+        <mat-error>{{ getFormFieldError('author') }}</mat-error>
+      </mat-form-field>
+
+      <!-- Author Suggestions -->
+      <div class="author-suggestions" *ngIf="!quotationForm.get('author')?.value">
+        <span class="suggestions-label">Popular authors:</span>
+        <div class="suggestions-chips">
+          <button type="button" 
+                  mat-stroked-button 
+                  *ngFor="let author of getAuthorSuggestions().slice(0, 5)" 
+                  (click)="quotationForm.patchValue({author: author})"
+                  class="suggestion-chip">
+            {{ author }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Quotation Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Quotation</mat-label>
+        <textarea matInput 
+                  formControlName="quotation" 
+                  placeholder="Enter the quotation text"
+                  rows="4"
+                  maxlength="2000"></textarea>
+        <mat-icon matSuffix>format_quote</mat-icon>
+        <mat-hint align="start">Use quotation marks if you want them to appear in the text</mat-hint>
+        <mat-hint align="end">{{ getCharacterCount('quotation') }}</mat-hint>
+        <mat-error>{{ getFormFieldError('quotation') }}</mat-error>
+      </mat-form-field>
+
+      <!-- Date Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Quote Date</mat-label>
+        <input matInput 
+               [matDatepicker]="picker" 
+               formControlName="date"
+               [max]="maxDate"
+               placeholder="When was this quote said/written?">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-hint>The date when this quotation was originally said or written</mat-hint>
+        <mat-error>{{ getFormFieldError('date') }}</mat-error>
+      </mat-form-field>
+
+      <!-- Preview Section -->
+      <div class="quote-preview" *ngIf="quotationForm.get('quotation')?.value && quotationForm.get('author')?.value">
+        <h4>Preview:</h4>
+        <div class="preview-card">
+          <div class="quote-text">
+            <mat-icon class="quote-icon">format_quote</mat-icon>
+            {{ quotationForm.get('quotation')?.value }}
+          </div>
+          <div class="quote-attribution">
+            — {{ quotationForm.get('author')?.value }}
+            <span *ngIf="quotationForm.get('date')?.value" class="quote-date">
+              ({{ quotationForm.get('date')?.value | date:'mediumDate' }})
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Dialog Actions -->
+  <div mat-dialog-actions class="dialog-actions">
+    <div class="form-status" *ngIf="!isFormValid() && quotationForm.touched">
+      <mat-icon class="warning-icon">warning</mat-icon>
+      Please fill in all required fields correctly
+    </div>
+    <div class="spacer"></div>
+    <button mat-button (click)="onCancel()" type="button">
+      Cancel
+    </button>
+    <button mat-raised-button 
+            color="primary" 
+            (click)="onSubmit()"
+            [disabled]="!isFormValid()"
+            type="button">
+      <mat-icon>{{ data.isEdit ? 'save' : 'add' }}</mat-icon>
+      {{ getSubmitButtonText() }}
+    </button>
+  </div>
+</div>

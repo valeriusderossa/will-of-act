@@ -35,6 +35,12 @@ export class SidebarComponent {
 
   navigationItems: NavigationItem[] = [
     {
+      label: 'Quotations',
+      route: '/quotations',
+      icon: 'format_quote',
+      description: 'Inspirational quotes and wisdom'
+    },
+    {
       label: 'Affirmations',
       route: '/affirmations',
       icon: 'favorite',

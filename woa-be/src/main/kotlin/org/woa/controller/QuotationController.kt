@@ -1,6 +1,5 @@
 package org.woa.controller
 
-import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -8,7 +7,6 @@ import org.woa.dto.QuotationRequestDto
 import org.woa.dto.QuotationResponseDto
 import org.woa.dto.QuotationSummaryDto
 import org.woa.service.QuotationService
-import java.time.LocalDate
 import java.util.*
 
 @RestController
@@ -38,35 +36,6 @@ class QuotationController(private val quotationService: QuotationService) {
         } catch (e: NoSuchElementException) {
             ResponseEntity.notFound().build()
         }
-    }
-
-    @GetMapping("/search")
-    fun searchQuotations(@RequestParam searchText: String): ResponseEntity<List<QuotationResponseDto>> {
-        val quotations = quotationService.searchQuotations(searchText)
-        return ResponseEntity.ok(quotations)
-    }
-
-    @GetMapping("/author/{author}")
-    fun getQuotationsByAuthor(@PathVariable author: String): ResponseEntity<List<QuotationResponseDto>> {
-        val quotations = quotationService.searchQuotationsByAuthor(author)
-        return ResponseEntity.ok(quotations)
-    }
-
-    @GetMapping("/date/{date}")
-    fun getQuotationsByDate(
-        @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") date: LocalDate
-    ): ResponseEntity<List<QuotationResponseDto>> {
-        val quotations = quotationService.getQuotationsByDate(date)
-        return ResponseEntity.ok(quotations)
-    }
-
-    @GetMapping("/date-range")
-    fun getQuotationsByDateRange(
-        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") startDate: LocalDate,
-        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") endDate: LocalDate
-    ): ResponseEntity<List<QuotationResponseDto>> {
-        val quotations = quotationService.getQuotationsByDateRange(startDate, endDate)
-        return ResponseEntity.ok(quotations)
     }
 
     @PostMapping
