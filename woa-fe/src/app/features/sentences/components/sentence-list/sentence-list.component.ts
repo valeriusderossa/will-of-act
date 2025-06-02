@@ -6,9 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+
 import {
   SentenceService,
   SentenceResponse,
@@ -26,21 +24,16 @@ import {
     MatIconModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule
+    MatCardModule
   ],
   templateUrl: './sentence-list.component.html',
   styleUrl: './sentence-list.component.scss'
 })
 export class SentenceListComponent implements OnInit {
   sentences: SentenceResponse[] = [];
-  filteredSentences: SentenceResponse[] = [];
   displayedColumns: string[] = ['id', 'englishText', 'polishText', 'pronunciation', 'createdAt', 'actions'];
   loading = false;
   message = '';
-  searchText = '';
 
   private readonly sentenceService = inject(SentenceService);
   private readonly dialog = inject(MatDialog);
@@ -52,10 +45,10 @@ export class SentenceListComponent implements OnInit {
   loadSentences(): void {
     this.loading = true;
     this.message = '';
+
     this.sentenceService.getAllSentences().subscribe({
       next: (sentences) => {
         this.sentences = sentences;
-        this.filteredSentences = sentences;
         this.loading = false;
       },
       error: (error) => {
@@ -66,31 +59,9 @@ export class SentenceListComponent implements OnInit {
     });
   }
 
-  onSearchChange(): void {
-    if (!this.searchText.trim()) {
-      this.filteredSentences = this.sentences;
-      return;
-    }
-
-    this.sentenceService.searchSentences(this.searchText).subscribe({
-      next: (sentences) => {
-        this.filteredSentences = sentences;
-      },
-      error: (error) => {
-        console.error('Error searching sentences:', error);
-        this.message = 'Error searching sentences';
-      }
-    });
-  }
-
-  clearSearch(): void {
-    this.searchText = '';
-    this.filteredSentences = this.sentences;
-  }
-
   openAddDialog(): void {
     const dialogRef = this.dialog.open(SentenceDialogComponent, {
-      width: '600px',
+      width: '500px',
       data: { isEdit: false }
     });
 
@@ -103,7 +74,7 @@ export class SentenceListComponent implements OnInit {
 
   openEditDialog(sentence: SentenceResponse): void {
     const dialogRef = this.dialog.open(SentenceDialogComponent, {
-      width: '600px',
+      width: '500px',
       data: { sentence, isEdit: true }
     });
 
@@ -162,7 +133,9 @@ export class SentenceListComponent implements OnInit {
   }
 
   formatDate(dateString: string): string {
-    return new Date(dateString).toLocaleDateString();
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
   }
 
   truncateText(text: string, maxLength: number = 50): string {

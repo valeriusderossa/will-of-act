@@ -6,11 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import {
   QuotationService,
@@ -18,11 +13,6 @@ import {
   QuotationRequest,
   QuotationDialogComponent
 } from '../../index';
-import {MatInputModule} from '@angular/material/input';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {debounceTime, distinctUntilChanged} from 'rxjs';
 
 @Component({
   selector: 'app-quotation-list',
@@ -34,80 +24,31 @@ import {debounceTime, distinctUntilChanged} from 'rxjs';
     MatIconModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatToolbarModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatTooltipModule,
-    ReactiveFormsModule
+    MatCardModule
   ],
   templateUrl: './quotation-list.component.html',
   styleUrl: './quotation-list.component.scss'
 })
 export class QuotationListComponent implements OnInit {
   quotations: QuotationResponse[] = [];
-  filteredQuotations: QuotationResponse[] = [];
-  displayedColumns: string[] = ['author', 'quotation', 'date', 'actions'];
+  displayedColumns: string[] = ['id', 'author', 'quotation', 'date', 'createdAt', 'actions'];
   loading = false;
   message = '';
-
-  searchControl = new FormControl<string>('');
-  sortControl = new FormControl<string>('createdAt');
-  authorFilterControl = new FormControl<string>('');
-  dateFilterControl = new FormControl<Date | null>(null);
-
-  sortOptions = [
-    { value: 'createdAt', label: 'Latest First' },
-    { value: 'createdAtAsc', label: 'Oldest First' },
-    { value: 'author', label: 'Author A-Z' },
-    { value: 'authorDesc', label: 'Author Z-A' },
-    { value: 'date', label: 'Date Ascending' },
-    { value: 'dateDesc', label: 'Date Descending' }
-  ];
-
-  uniqueAuthors: string[] = [];
 
   private readonly quotationService = inject(QuotationService);
   private readonly dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.loadQuotations();
-    this.setupFilters();
   }
 
-  setupFilters(): void {
-    // Search filter
-    this.searchControl.valueChanges
-      .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe(() => this.applyFilters());
-
-    // Sort control
-    this.sortControl.valueChanges.subscribe((sortBy) => {
-      if (sortBy) {
-        this.loadQuotations(sortBy);
-      }
-    });
-
-    // Author filter
-    this.authorFilterControl.valueChanges.subscribe(() => this.applyFilters());
-
-    // Date filter
-    this.dateFilterControl.valueChanges.subscribe(() => this.applyFilters());
-  }
-
-  loadQuotations(sortBy: string = 'createdAt'): void {
+  loadQuotations(): void {
     this.loading = true;
     this.message = '';
 
-    this.quotationService.getAllQuotations(sortBy).subscribe({
+    this.quotationService.getAllQuotations().subscribe({
       next: (quotations) => {
         this.quotations = quotations;
-        this.updateUniqueAuthors();
-        this.applyFilters();
         this.loading = false;
       },
       error: (error) => {
@@ -118,50 +59,9 @@ export class QuotationListComponent implements OnInit {
     });
   }
 
-  updateUniqueAuthors(): void {
-    this.uniqueAuthors = [...new Set(this.quotations.map(q => q.author))].sort();
-  }
-
-  applyFilters(): void {
-    let filtered = [...this.quotations];
-
-    // Apply search filter
-    const searchTerm = this.searchControl.value?.toLowerCase() || '';
-    if (searchTerm) {
-      filtered = filtered.filter(quotation =>
-        quotation.author.toLowerCase().includes(searchTerm) ||
-        quotation.quotation.toLowerCase().includes(searchTerm)
-      );
-    }
-
-    // Apply author filter
-    const authorFilter = this.authorFilterControl.value;
-    if (authorFilter) {
-      filtered = filtered.filter(quotation => quotation.author === authorFilter);
-    }
-
-    // Apply date filter
-    const dateFilter = this.dateFilterControl.value;
-    if (dateFilter) {
-      const filterDate = this.formatDateForComparison(new Date(dateFilter));
-      filtered = filtered.filter(quotation =>
-        quotation.date === filterDate
-      );
-    }
-
-    this.filteredQuotations = filtered;
-  }
-
-  clearFilters(): void {
-    this.searchControl.setValue('');
-    this.authorFilterControl.setValue('');
-    this.dateFilterControl.setValue(null);
-    this.applyFilters();
-  }
-
   openAddDialog(): void {
     const dialogRef = this.dialog.open(QuotationDialogComponent, {
-      width: '600px',
+      width: '500px',
       data: { isEdit: false }
     });
 
@@ -174,7 +74,7 @@ export class QuotationListComponent implements OnInit {
 
   openEditDialog(quotation: QuotationResponse): void {
     const dialogRef = this.dialog.open(QuotationDialogComponent, {
-      width: '600px',
+      width: '500px',
       data: { quotation, isEdit: true }
     });
 
@@ -189,7 +89,7 @@ export class QuotationListComponent implements OnInit {
     this.quotationService.createQuotation(request).subscribe({
       next: () => {
         this.message = 'Quotation created successfully';
-        this.loadQuotations(this.sortControl.value || 'createdAt');
+        this.loadQuotations();
         setTimeout(() => this.message = '', 3000);
       },
       error: (error) => {
@@ -204,7 +104,7 @@ export class QuotationListComponent implements OnInit {
     this.quotationService.updateQuotation(id, request).subscribe({
       next: () => {
         this.message = 'Quotation updated successfully';
-        this.loadQuotations(this.sortControl.value || 'createdAt');
+        this.loadQuotations();
         setTimeout(() => this.message = '', 3000);
       },
       error: (error) => {
@@ -220,7 +120,7 @@ export class QuotationListComponent implements OnInit {
       this.quotationService.deleteQuotation(id).subscribe({
         next: () => {
           this.message = 'Quotation deleted successfully';
-          this.loadQuotations(this.sortControl.value || 'createdAt');
+          this.loadQuotations();
           setTimeout(() => this.message = '', 3000);
         },
         error: (error) => {
@@ -232,38 +132,13 @@ export class QuotationListComponent implements OnInit {
     }
   }
 
-  formatDate(dateString: string | Date): string {
+  formatDate(dateString: string): string {
     if (!dateString) return '';
-    const date = typeof dateString === 'string' ? new Date(dateString) : dateString;
+    const date = new Date(dateString);
     return date.toLocaleDateString();
   }
 
-  formatDateForComparison(date: Date): string {
-    if (!date) return '';
-    return date.toISOString().split('T')[0];
-  }
-
-  truncateText(text: string, maxLength: number = 150): string {
+  truncateText(text: string, maxLength: number = 50): string {
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-  }
-
-  getDateFilterDisplayValue(): string {
-    const dateValue = this.dateFilterControl.value;
-    if (!dateValue) return '';
-    return this.formatDate(dateValue);
-  }
-
-  hasActiveFilters(): boolean {
-    return !!(this.searchControl.value ||
-              this.authorFilterControl.value ||
-              this.dateFilterControl.value);
-  }
-
-  getAuthorInitials(author: string): string {
-    return author.split(' ')
-      .map(name => name.charAt(0))
-      .join('')
-      .toUpperCase()
-      .substring(0, 2);
   }
 }

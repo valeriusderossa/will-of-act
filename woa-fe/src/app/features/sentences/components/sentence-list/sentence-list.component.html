@@ -1,37 +1,17 @@
 <div class="sentence-list-container">
   <div class="header">
-    <h1>Language Learning Sentences</h1>
-    <p class="subtitle">Manage English-Polish sentence pairs</p>
-    
-    <!-- Search and Add Section -->
-    <div class="controls">
-      <mat-form-field class="search-field">
-        <mat-label>Search sentences</mat-label>
-        <input 
-          matInput 
-          [(ngModel)]="searchText" 
-          (input)="onSearchChange()"
-          placeholder="Search in English or Polish...">
-        <mat-icon matSuffix>search</mat-icon>
-        <button 
-          mat-icon-button 
-          matSuffix 
-          *ngIf="searchText" 
-          (click)="clearSearch()"
-          title="Clear search">
-          <mat-icon>clear</mat-icon>
-        </button>
-      </mat-form-field>
-      
-      <button 
-        mat-raised-button 
-        color="primary" 
-        (click)="openAddDialog()"
-        class="add-button">
-        <mat-icon>add</mat-icon>
-        Add New Sentence
-      </button>
-    </div>
+    <h1>My Sentences</h1>
+    <p class="subtitle">Manage your language learning sentences</p>
+
+    <!-- Add Button -->
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openAddDialog()"
+      class="add-button">
+      <mat-icon>add</mat-icon>
+      Add New Sentence
+    </button>
   </div>
 
   <!-- Message Display -->
@@ -41,7 +21,7 @@
 
   <div class="table-container" *ngIf="!loading">
     <mat-card class="table-card">
-      <table mat-table [dataSource]="filteredSentences">
+      <table mat-table [dataSource]="sentences">
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -67,9 +47,8 @@
         <!-- Pronunciation Column -->
         <ng-container matColumnDef="pronunciation">
           <th mat-header-cell *matHeaderCellDef>Pronunciation</th>
-          <td mat-cell *matCellDef="let sentence" class="pronunciation-cell">
-            <span *ngIf="sentence.pronunciation" class="pronunciation">{{ sentence.pronunciation }}</span>
-            <span *ngIf="!sentence.pronunciation" class="no-pronunciation">—</span>
+          <td mat-cell *matCellDef="let sentence" class="text-cell">
+            <span [title]="sentence.pronunciation">{{ sentence.pronunciation || '—' }}</span>
           </td>
         </ng-container>
 
@@ -83,15 +62,15 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let sentence">
-            <button 
-              mat-icon-button 
+            <button
+              mat-icon-button
               color="primary"
               (click)="openEditDialog(sentence)"
               title="Edit">
               <mat-icon>edit</mat-icon>
             </button>
-            <button 
-              mat-icon-button 
+            <button
+              mat-icon-button
               color="warn"
               (click)="deleteSentence(sentence.id)"
               title="Delete">
@@ -105,12 +84,10 @@
       </table>
 
       <!-- Empty State -->
-      <div class="empty-state" *ngIf="filteredSentences.length === 0 && !loading">
+      <div class="empty-state" *ngIf="sentences.length === 0">
         <mat-icon class="empty-icon">translate</mat-icon>
-        <h2 *ngIf="!searchText">No sentences yet</h2>
-        <h2 *ngIf="searchText">No sentences found</h2>
-        <p *ngIf="!searchText">Create your first sentence pair to get started!</p>
-        <p *ngIf="searchText">Try a different search term</p>
+        <h2>No sentences yet</h2>
+        <p>Create your first sentence pair to get started!</p>
       </div>
     </mat-card>
   </div>
