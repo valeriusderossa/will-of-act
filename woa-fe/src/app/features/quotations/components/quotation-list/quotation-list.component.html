@@ -28,26 +28,12 @@
           <td mat-cell *matCellDef="let quotation">{{ quotation.id }}</td>
         </ng-container>
 
-        <!-- Author Column -->
-        <ng-container matColumnDef="author">
-          <th mat-header-cell *matHeaderCellDef>Author</th>
-          <td mat-cell *matCellDef="let quotation" class="text-cell">
-            <span [title]="quotation.author">{{ truncateText(quotation.author) }}</span>
-          </td>
-        </ng-container>
-
         <!-- Quotation Column -->
         <ng-container matColumnDef="quotation">
           <th mat-header-cell *matHeaderCellDef>Quotation</th>
           <td mat-cell *matCellDef="let quotation" class="text-cell">
-            <span [title]="quotation.quotation">{{ truncateText(quotation.quotation) }}</span>
+            <span [title]="quotation.quotation + ' - ' + quotation.author">{{ truncateText(quotation.quotation + ' - ' + quotation.author) }}</span>
           </td>
-        </ng-container>
-
-        <!-- Date Column -->
-        <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef>Date</th>
-          <td mat-cell *matCellDef="let quotation">{{ formatDate(quotation.date) }}</td>
         </ng-container>
 
         <!-- Created At Column -->

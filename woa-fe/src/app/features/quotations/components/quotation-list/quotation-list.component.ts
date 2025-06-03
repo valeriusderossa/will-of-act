@@ -31,7 +31,7 @@ import {
 })
 export class QuotationListComponent implements OnInit {
   quotations: QuotationResponse[] = [];
-  displayedColumns: string[] = ['id', 'author', 'quotation', 'date', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['id', 'quotation', 'createdAt', 'actions'];
   loading = false;
   message = '';
 

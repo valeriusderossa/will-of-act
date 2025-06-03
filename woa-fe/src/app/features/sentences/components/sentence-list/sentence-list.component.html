@@ -28,27 +28,11 @@
           <td mat-cell *matCellDef="let sentence">{{ sentence.id }}</td>
         </ng-container>
 
-        <!-- English Text Column -->
-        <ng-container matColumnDef="englishText">
-          <th mat-header-cell *matHeaderCellDef>English</th>
+        <!-- Sentence Column -->
+        <ng-container matColumnDef="sentence">
+          <th mat-header-cell *matHeaderCellDef>Sentence</th>
           <td mat-cell *matCellDef="let sentence" class="text-cell">
-            <span [title]="sentence.englishText">{{ truncateText(sentence.englishText) }}</span>
-          </td>
-        </ng-container>
-
-        <!-- Polish Text Column -->
-        <ng-container matColumnDef="polishText">
-          <th mat-header-cell *matHeaderCellDef>Polish</th>
-          <td mat-cell *matCellDef="let sentence" class="text-cell">
-            <span [title]="sentence.polishText">{{ truncateText(sentence.polishText) }}</span>
-          </td>
-        </ng-container>
-
-        <!-- Pronunciation Column -->
-        <ng-container matColumnDef="pronunciation">
-          <th mat-header-cell *matHeaderCellDef>Pronunciation</th>
-          <td mat-cell *matCellDef="let sentence" class="text-cell">
-            <span [title]="sentence.pronunciation">{{ sentence.pronunciation || '—' }}</span>
+            <span [title]="sentence.englishText + ' | ' + sentence.polishText">{{ truncateText(sentence.englishText + ' | ' + sentence.polishText) }}</span>
           </td>
         </ng-container>
 
