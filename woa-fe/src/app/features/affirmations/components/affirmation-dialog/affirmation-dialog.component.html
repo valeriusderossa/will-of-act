@@ -8,7 +8,8 @@
         matInput
         formControlName="text"
         placeholder="Enter your affirmation..."
-        rows="4">
+        rows="8"
+        maxlength="2000">
       </textarea>
       <mat-error *ngIf="affirmationForm.get('text')?.hasError('required')">
         Affirmation text is required
@@ -16,6 +17,7 @@
       <mat-error *ngIf="affirmationForm.get('text')?.hasError('minlength')">
         Affirmation text must not be empty
       </mat-error>
+      <mat-hint align="end">{{ getTextLength() }}/2000</mat-hint>
     </mat-form-field>
   </form>
 </div>

@@ -34,7 +34,7 @@ class AffirmationService(private val affirmationRepository: AffirmationRepositor
     @Transactional
     fun createAffirmation(requestDto: AffirmationRequestDto): AffirmationResponseDto {
         val affirmation = Affirmation(
-            text = requestDto.text,
+            text = requestDto.text
         )
 
         return affirmationRepository.save(affirmation).toResponseDto()

@@ -36,7 +36,7 @@ export class AffirmationDialogComponent {
     this.affirmationForm = this.fb.group({
       text: [
         data.affirmation?.text || '',
-        [Validators.required, Validators.minLength(1)]
+        [Validators.required, Validators.minLength(1), Validators.maxLength(2000)]
       ]
     });
   }
@@ -49,10 +49,16 @@ export class AffirmationDialogComponent {
     return this.isEdit ? 'Edit Affirmation' : 'Add New Affirmation';
   }
 
+  getTextLength(): number {
+    const textValue = this.affirmationForm.get('text')?.value;
+    return textValue ? textValue.length : 0;
+  }
+
   onSave(): void {
     if (this.affirmationForm.valid) {
+      const formValue = this.affirmationForm.value;
       const request: AffirmationRequest = {
-        text: this.affirmationForm.value.text
+        text: formValue.text.trim()
       };
       this.dialogRef.close(request);
     }

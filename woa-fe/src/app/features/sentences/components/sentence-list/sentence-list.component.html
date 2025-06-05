@@ -22,12 +22,6 @@
   <div class="table-container" *ngIf="!loading">
     <mat-card class="table-card">
       <table mat-table [dataSource]="sentences">
-        <!-- ID Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let sentence">{{ sentence.id }}</td>
-        </ng-container>
-
         <!-- Sentence Column -->
         <ng-container matColumnDef="sentence">
           <th mat-header-cell *matHeaderCellDef>Sentence</th>

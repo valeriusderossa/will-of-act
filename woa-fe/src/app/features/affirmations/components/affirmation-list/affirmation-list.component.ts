@@ -30,7 +30,7 @@ import {
 })
 export class AffirmationListComponent implements OnInit {
   affirmations: AffirmationResponse[] = [];
-  displayedColumns: string[] = ['id', 'text', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['text', 'createdAt', 'actions'];
   loading = false;
   message = '';
 
@@ -59,7 +59,7 @@ export class AffirmationListComponent implements OnInit {
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(AffirmationDialogComponent, {
-      width: '500px',
+      width: '600px',
       data: { isEdit: false }
     });
 
@@ -72,7 +72,7 @@ export class AffirmationListComponent implements OnInit {
 
   openEditDialog(affirmation: AffirmationResponse): void {
     const dialogRef = this.dialog.open(AffirmationDialogComponent, {
-      width: '500px',
+      width: '600px',
       data: { affirmation, isEdit: true }
     });
 
@@ -135,6 +135,7 @@ export class AffirmationListComponent implements OnInit {
   }
 
   truncateText(text: string, maxLength: number = 100): string {
+    if (!text) return '';
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
   }
 }

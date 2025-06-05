@@ -1,32 +1,86 @@
-// Component-specific styles only
-// Use global classes: .page-container, .page-header, .message, .empty-state, .loading-container
+// Keep minimal - let Angular Material handle most styling
+.affirmation-list-container {
+  padding: 16px;
+}
 
-.add-button {
-  mat-icon {
-    margin-right: var(--spacing-sm);
+.header {
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 0 0 8px 0;
+  }
+
+  .subtitle {
+    margin: 0 0 16px 0;
+    color: #666;
   }
 }
 
-.table-container {
-  .mat-column-id {
-    flex: 0 0 60px;
+.add-button {
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+.message {
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 4px;
+
+  &.success {
+    background-color: #d4edda;
+    color: #155724;
   }
 
-  .mat-column-text {
-    flex: 1 1 auto;
+  &.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+}
+
+.table-card {
+  margin-bottom: 16px;
+}
+
+.text-cell {
+  max-width: 300px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+
+  .empty-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: #ccc;
+    margin-bottom: 16px;
   }
 
-  .mat-column-createdAt {
-    flex: 0 0 120px;
+  h2 {
+    margin: 0 0 8px 0;
+    color: #666;
   }
 
-  .mat-column-actions {
-    flex: 0 0 120px;
+  p {
+    margin: 0;
+    color: #999;
+  }
+}
+
+.loading-container {
+  text-align: center;
+  padding: 48px 16px;
+
+  p {
+    margin-top: 16px;
+    color: #666;
   }
 }
 
 // Mobile-specific overrides
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: 768px) {
   .add-button {
     width: 100%;
   }

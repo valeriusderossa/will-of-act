@@ -2,10 +2,24 @@
 // Global dialog styles are already defined in styles.scss
 
 mat-dialog-content {
-  min-width: 400px;
-  min-height: 200px;
+  min-width: 550px;
+  min-height: 300px;
 }
 
-textarea {
-  min-height: 80px;
+mat-form-field {
+  width: 100%;
+
+  textarea {
+    min-height: 160px; // Make the text field the biggest among all dialogs
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical; // Allow users to resize if needed
+  }
+}
+
+// Make the dialog slightly larger to accommodate the bigger text field
+@media (max-width: 768px) {
+  mat-dialog-content {
+    min-width: 90vw;
+  }
 }

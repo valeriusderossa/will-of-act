@@ -145,6 +145,7 @@ class AffirmationControllerIntegrationTest extends Specification {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath('$.id').value(1))
             .andExpect(jsonPath('$.text').value("Updated affirmation"))
+            .andExpect(jsonPath('$.description').value("Updated description"))
     }
 
     def "should return 404 when updating non-existent affirmation"() {

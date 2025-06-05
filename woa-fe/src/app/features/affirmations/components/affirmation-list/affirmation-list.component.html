@@ -22,12 +22,6 @@
   <div class="table-container" *ngIf="!loading">
     <mat-card class="table-card">
       <table mat-table [dataSource]="affirmations">
-        <!-- ID Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let affirmation">{{ affirmation.id }}</td>
-        </ng-container>
-
         <!-- Text Column -->
         <ng-container matColumnDef="text">
           <th mat-header-cell *matHeaderCellDef>Affirmation</th>

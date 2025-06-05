@@ -31,7 +31,7 @@ import {
 })
 export class SentenceListComponent implements OnInit {
   sentences: SentenceResponse[] = [];
-  displayedColumns: string[] = ['id', 'sentence', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['sentence', 'createdAt', 'actions'];
   loading = false;
   message = '';
 
