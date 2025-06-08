@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="711cbd69-0d16-4267-b14c-c35147a640cf" name="Changes" comment="working app">
-      <change beforePath="$PROJECT_DIR$/woa-be/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/resources/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/src/main/resources/db/migration/V1__Create_quotations_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/resources/db/migration/V1__Create_quotations_table.sql" afterDir="false" />
+    <list default="true" id="711cbd69-0d16-4267-b14c-c35147a640cf" name="Changes" comment="working migration">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/BACKEND_TESTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/DATABASE_MIGRATIONS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-be/HELP.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,31 @@
     <projectState path="$PROJECT_DIR$/woa-be">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="will-of-act" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="will-of-act" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +98,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Spring Boot.WoaBeApplication">
+  <component name="RunManager" selected="npm.start">
     <configuration name="WoaBeApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.woa.WoaBeApplicationKt" />
       <module name="woa-be.main" />
@@ -122,8 +148,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.WoaBeApplication" />
         <item itemvalue="npm.start" />
+        <item itemvalue="Spring Boot.WoaBeApplication" />
         <item itemvalue="Kotlin.WoaBeApplicationKt" />
         <item itemvalue="npm.ng" />
       </list>
@@ -216,7 +242,31 @@
       <option name="project" value="LOCAL" />
       <updated>1748891601353</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="working migration">
+      <option name="closed" value="true" />
+      <created>1749414879440</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1749414879440</updated>
+    </task>
+    <task id="LOCAL-00009" summary="working migration">
+      <option name="closed" value="true" />
+      <created>1749414892431</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1749414892431</updated>
+    </task>
+    <task id="LOCAL-00010" summary="working migration">
+      <option name="closed" value="true" />
+      <created>1749414903378</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1749414903378</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +285,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="working app" />
-    <option name="LAST_COMMIT_MESSAGE" value="working app" />
+    <MESSAGE value="working migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="working migration" />
   </component>
 </project>
