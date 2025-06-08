@@ -4,6 +4,7 @@ plugins {
     id 'org.springframework.boot' version '3.4.5'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.9.25'
+    id 'org.flywaydb.flyway' version '10.21.0'
     id 'groovy'
 }
 
@@ -47,6 +48,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    
+    // Flyway for database migrations
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-database-postgresql'
+    
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
@@ -54,6 +60,7 @@ dependencies {
     // Test dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
+    testImplementation 'com.h2database:h2' // H2 for testing
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     
     // Spock Framework
@@ -81,4 +88,27 @@ tasks.named('test') {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
     }
+}
+
+// Flyway configuration for manual operations
+// Note: Application runtime configuration is in application.yml files
+flyway {
+    url = project.hasProperty('flyway.url') ? project.property('flyway.url') : 'jdbc:postgresql://localhost:6666/woa_db'
+    user = project.hasProperty('flyway.user') ? project.property('flyway.user') : 'woa_user'
+    password = project.hasProperty('flyway.password') ? project.property('flyway.password') : 'woa_password'
+    
+    // Default to schema migrations only for manual operations
+    // To include test data: ./gradlew flywayMigrate -Pflyway.locations=classpath:db/migration,classpath:db/test-data
+    locations = project.hasProperty('flyway.locations') ? 
+        project.property('flyway.locations').split(',') : 
+        ['classpath:db/migration']
+    
+    schemas = ['public']
+    baselineOnMigrate = true
+    validateOnMigrate = true
+    
+    // Safety settings
+    cleanDisabled = project.hasProperty('flyway.cleanDisabled') ? 
+        project.property('flyway.cleanDisabled').toBoolean() : 
+        true  // Default to true for safety
 }
