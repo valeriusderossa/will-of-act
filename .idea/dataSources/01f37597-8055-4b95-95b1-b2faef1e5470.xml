@@ -3,9 +3,17 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>757</IntrospectionStateNumber>
-      <ServerVersion>16.8</ServerVersion>
-      <StartupTime>1747891690</StartupTime>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+4||-9223372036854775808|c|G
+4||10|c|G
+4||10|C|G
+4||10|T|G</Grants>
+      <IntrospectionStateNumber>750</IntrospectionStateNumber>
+      <ServerVersion>16.9</ServerVersion>
+      <StartupTime>1749408361</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -132,6 +140,7 @@ true America/Ciudad_Juarez
 false America/Coral_Harbour
 false America/Cordoba
 false America/Costa_Rica
+false America/Coyhaique
 false America/Creston
 false America/Cuiaba
 false America/Curacao
@@ -805,8 +814,11 @@ true posixrules
 2200||6171|U|G
 13255||10|C|G
 13255||-9223372036854775808|U|G
-13255||10|U|G</Grants>
-      <IntrospectionStateNumber>757</IntrospectionStateNumber>
+13255||10|U|G
+13273||10|C|G
+13273||-9223372036854775808|U|G
+13273||10|U|G</Grants>
+      <IntrospectionStateNumber>750</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>woa_user</OwnerName>
     </database>
@@ -4167,15 +4179,15 @@ true posixrules
     </cast>
     <extension id="257" parent="3" name="plpgsql">
       <Comment>PL/pgSQL procedural language</Comment>
-      <ObjectId>13607</ObjectId>
+      <ObjectId>13625</ObjectId>
       <StateNumber>684</StateNumber>
       <Version>1.0</Version>
       <ExtSchemaId>11</ExtSchemaId>
       <ExtSchemaName>pg_catalog</ExtSchemaName>
-      <MemberIds>13608
-13609
-13610
-13611</MemberIds>
+      <MemberIds>13626
+13627
+13628
+13629</MemberIds>
     </extension>
     <language id="258" parent="3" name="c">
       <Comment>dynamically-loaded C functions</Comment>
@@ -4197,7 +4209,7 @@ true posixrules
       <HandlerSchema>pg_catalog</HandlerSchema>
       <InlineHandlerName>plpgsql_inline_handler</InlineHandlerName>
       <InlineHandlerSchema>pg_catalog</InlineHandlerSchema>
-      <ObjectId>13611</ObjectId>
+      <ObjectId>13629</ObjectId>
       <StateNumber>684</StateNumber>
       <Trusted>1</Trusted>
       <ValidatorName>plpgsql_validator</ValidatorName>
@@ -4212,7 +4224,7 @@ true posixrules
       <ValidatorSchema>pg_catalog</ValidatorSchema>
     </language>
     <schema id="262" parent="3" name="information_schema">
-      <ObjectId>13255</ObjectId>
+      <ObjectId>13273</ObjectId>
       <StateNumber>530</StateNumber>
       <OwnerName>woa_user</OwnerName>
     </schema>
@@ -4225,163 +4237,11 @@ true posixrules
     <schema id="264" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>757</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-05-22.19:55:57</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>750</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-06-08.20:34:08</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
-    <sequence id="265" parent="264" name="affirmations_id_seq">
-      <ObjectId>16403</ObjectId>
-      <SequenceIdentity>1</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>755</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <OwnerName>woa_user</OwnerName>
-    </sequence>
-    <sequence id="266" parent="264" name="sentences_id_seq">
-      <ObjectId>16409</ObjectId>
-      <SequenceIdentity>1</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>756</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <OwnerName>woa_user</OwnerName>
-    </sequence>
-    <table id="267" parent="264" name="affirmations">
-      <ObjectId>16404</ObjectId>
-      <StateNumber>755</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>woa_user</OwnerName>
-    </table>
-    <table id="268" parent="264" name="sentences">
-      <ObjectId>16410</ObjectId>
-      <StateNumber>756</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>woa_user</OwnerName>
-    </table>
-    <column id="269" parent="267" name="id">
-      <IdentityKind>by-default</IdentityKind>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>755</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <SequenceId>16403</SequenceId>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="270" parent="267" name="created_at">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>755</StateNumber>
-      <StoredType>timestamp(6)|0s</StoredType>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="271" parent="267" name="text">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>755</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="272" parent="267" name="updated_at">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>755</StateNumber>
-      <StoredType>timestamp(6)|0s</StoredType>
-      <TypeId>1114</TypeId>
-    </column>
-    <index id="273" parent="267" name="affirmations_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16407</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>755</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="274" parent="267" name="affirmations_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16408</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>755</StateNumber>
-      <UnderlyingIndexId>16407</UnderlyingIndexId>
-    </key>
-    <column id="275" parent="268" name="id">
-      <IdentityKind>by-default</IdentityKind>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <SequenceId>16409</SequenceId>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="276" parent="268" name="category">
-      <Position>2</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="277" parent="268" name="created_at">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>timestamp(6)|0s</StoredType>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="278" parent="268" name="difficulty_level">
-      <Position>4</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="279" parent="268" name="english_text">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="280" parent="268" name="polish_text">
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="281" parent="268" name="pronunciation">
-      <Position>7</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="282" parent="268" name="updated_at">
-      <NotNull>1</NotNull>
-      <Position>8</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>timestamp(6)|0s</StoredType>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="283" parent="268" name="view_count">
-      <NotNull>1</NotNull>
-      <Position>9</Position>
-      <StateNumber>756</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <TypeId>23</TypeId>
-    </column>
-    <index id="284" parent="268" name="sentences_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16415</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>756</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="285" parent="268" name="sentences_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16416</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>756</StateNumber>
-      <UnderlyingIndexId>16415</UnderlyingIndexId>
-    </key>
   </database-model>
 </dataSource>
