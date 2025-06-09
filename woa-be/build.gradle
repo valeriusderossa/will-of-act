@@ -91,22 +91,20 @@ tasks.named('test') {
     }
 }
 
-// Flyway configuration for manual operations
-// Note: Application runtime configuration is in application.yml files
-flyway {
-    url = project.hasProperty('flyway.url') ? project.property('flyway.url') : 'jdbc:postgresql://localhost:6666/woa_db'
-    user = project.hasProperty('flyway.user') ? project.property('flyway.user') : 'woa_user'
-    password = project.hasProperty('flyway.password') ? project.property('flyway.password') : 'woa_password'
-    
-    // For Flyway 10.x, locations should be a simple array
-    if (project.hasProperty('flyway.locations')) {
-        locations = project.property('flyway.locations').split(',')
-    } else {
-        locations = ['classpath:db/migration']
-    }
-    
-    schemas = ['public']
-    baselineOnMigrate = true
-    validateOnMigrate = true
-    cleanDisabled = true  // Safety: disable clean by default
-}
+//flyway {
+//    url = project.hasProperty('flyway.url') ? project.property('flyway.url') : 'jdbc:postgresql://localhost:6666/woa_db'
+//    user = project.hasProperty('flyway.user') ? project.property('flyway.user') : 'woa_user'
+//    password = project.hasProperty('flyway.password') ? project.property('flyway.password') : 'woa_password'
+//
+//    // For Flyway 10.x, locations should be a simple array
+//    if (project.hasProperty('flyway.locations')) {
+//        locations = project.property('flyway.locations').split(',')
+//    } else {
+//        locations = ['classpath:db/migration']
+//    }
+//
+//    schemas = ['public']
+//    baselineOnMigrate = true
+//    validateOnMigrate = true
+//    cleanDisabled = true
+//}

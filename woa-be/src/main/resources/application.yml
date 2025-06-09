@@ -1,4 +1,5 @@
-
+server:
+  port: 8090
 spring:
   application:
     name: will-of-act
@@ -34,5 +35,4 @@ spring:
     baseline-on-migrate: true
     validate-on-migrate: true
   
-server:
-  port: 8090
+

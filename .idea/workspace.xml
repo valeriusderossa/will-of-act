@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="711cbd69-0d16-4267-b14c-c35147a640cf" name="Changes" comment="wd">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="711cbd69-0d16-4267-b14c-c35147a640cf" name="Changes" comment="added think">
       <change beforePath="$PROJECT_DIR$/woa-be/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-be/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/services/affirmation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/services/affirmation.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/services/quotation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/services/quotation.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/services/sentence.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/services/sentence.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/layout/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/layout/sidebar/sidebar.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +98,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Spring Boot.WoaBeApplication">
     <configuration name="WoaBeApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.woa.WoaBeApplicationKt" />
       <module name="woa-be.main" />
@@ -155,8 +148,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="Spring Boot.WoaBeApplication" />
+        <item itemvalue="npm.start" />
         <item itemvalue="Kotlin.WoaBeApplicationKt" />
         <item itemvalue="npm.ng" />
       </list>
@@ -275,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749414903378</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added think">
+      <option name="closed" value="true" />
+      <created>1749483237090</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1749483237090</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +297,7 @@
     <MESSAGE value="working app" />
     <MESSAGE value="working migration" />
     <MESSAGE value="wd" />
-    <option name="LAST_COMMIT_MESSAGE" value="wd" />
+    <MESSAGE value="added think" />
+    <option name="LAST_COMMIT_MESSAGE" value="added think" />
   </component>
 </project>
