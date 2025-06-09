@@ -97,18 +97,15 @@ flyway {
     user = project.hasProperty('flyway.user') ? project.property('flyway.user') : 'woa_user'
     password = project.hasProperty('flyway.password') ? project.property('flyway.password') : 'woa_password'
     
-    // Default to schema migrations only for manual operations
-    // To include test data: ./gradlew flywayMigrate -Pflyway.locations=classpath:db/migration,classpath:db/test-data
-    locations = project.hasProperty('flyway.locations') ? 
-        project.property('flyway.locations').split(',') : 
-        ['classpath:db/migration']
+    // For Flyway 10.x, locations should be a simple array
+    if (project.hasProperty('flyway.locations')) {
+        locations = project.property('flyway.locations').split(',')
+    } else {
+        locations = ['classpath:db/migration']
+    }
     
     schemas = ['public']
     baselineOnMigrate = true
     validateOnMigrate = true
-    
-    // Safety settings
-    cleanDisabled = project.hasProperty('flyway.cleanDisabled') ? 
-        project.property('flyway.cleanDisabled').toBoolean() : 
-        true  // Default to true for safety
+    cleanDisabled = true  // Safety: disable clean by default
 }
