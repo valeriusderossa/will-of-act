@@ -7,7 +7,7 @@ import { AffirmationResponse, AffirmationSummary, AffirmationRequest } from '../
   providedIn: 'root'
 })
 export class AffirmationService {
-  private readonly API_URL = 'http://localhost:8081/api/affirmations';
+  private readonly API_URL = 'http://localhost:8090/api/affirmations';
   private readonly http = inject(HttpClient);
 
   getAllAffirmations(): Observable<AffirmationResponse[]> {

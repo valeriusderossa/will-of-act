@@ -7,7 +7,7 @@ import { QuotationResponse, QuotationSummary, QuotationRequest } from '../index'
   providedIn: 'root'
 })
 export class QuotationService {
-  private readonly API_URL = 'http://localhost:8081/api/quotations';
+  private readonly API_URL = 'http://localhost:8090/api/quotations';
   private readonly http = inject(HttpClient);
 
   getAllQuotations(sortBy: string = 'createdAt'): Observable<QuotationResponse[]> {

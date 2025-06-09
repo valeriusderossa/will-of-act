@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{ dialogTitle }}</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="thinkForm">
+    <mat-form-field>
+      <mat-label>Your Think</mat-label>
+      <textarea
+        matInput
+        formControlName="text"
+        placeholder="Write your thoughts here..."
+        rows="6"
+        maxlength="2000">
+      </textarea>
+      <mat-error *ngIf="thinkForm.get('text')?.hasError('required')">
+        Text is required
+      </mat-error>
+      <mat-error *ngIf="thinkForm.get('text')?.hasError('minlength')">
+        Text must not be empty
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSave()"
+    [disabled]="!thinkForm.valid">
+    {{ isEdit ? 'Update' : 'Save' }}
+  </button>
+</div>

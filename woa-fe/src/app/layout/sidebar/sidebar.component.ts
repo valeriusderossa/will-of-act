@@ -51,6 +51,12 @@ export class SidebarComponent {
       route: '/sentences',
       icon: 'translate',
       description: 'Language learning sentences'
+    },
+    {
+      label: 'My Thinks',
+      route: '/thinks',
+      icon: 'lightbulb',
+      description: 'Personal thoughts and reflections'
     }
   ];
 

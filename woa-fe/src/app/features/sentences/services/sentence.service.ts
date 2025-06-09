@@ -7,7 +7,7 @@ import { SentenceResponse, SentenceSummary, SentenceRequest } from '../index';
   providedIn: 'root'
 })
 export class SentenceService {
-  private readonly API_URL = 'http://localhost:8081/api/sentences';
+  private readonly API_URL = 'http://localhost:8090/api/sentences';
   private readonly http = inject(HttpClient);
 
   getAllSentences(): Observable<SentenceResponse[]> {
