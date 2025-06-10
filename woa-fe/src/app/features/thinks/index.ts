@@ -1,5 +1,6 @@
 export * from './components/think-list/think-list.component';
 export * from './components/think-dialog/think-dialog.component';
+export * from './components/think-details-dialog/think-details-dialog.component';
 export * from './services/think.service';
 export * from './models/think.model';
 export * from './models/think-request.model';

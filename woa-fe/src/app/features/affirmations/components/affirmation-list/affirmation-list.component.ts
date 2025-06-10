@@ -12,6 +12,7 @@ import {
   AffirmationRequest,
   AffirmationDialogComponent
 } from '../../index';
+import { AffirmationDetailsDialogComponent } from '../affirmation-details-dialog/affirmation-details-dialog.component';
 
 @Component({
   selector: 'app-affirmation-list',
@@ -128,6 +129,13 @@ export class AffirmationListComponent implements OnInit {
         }
       });
     }
+  }
+
+  openViewDialog(affirmation: AffirmationResponse): void {
+    this.dialog.open(AffirmationDetailsDialogComponent, {
+      width: '600px',
+      data: { affirmation }
+    });
   }
 
   formatDate(dateString: string): string {

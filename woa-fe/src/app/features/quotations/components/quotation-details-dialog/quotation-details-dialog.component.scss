@@ -1,0 +1,316 @@
+.details-dialog {
+  max-width: 650px;
+  width: 100%;
+
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    margin: -24px -24px 0 -24px;
+
+    .title-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .title-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+        color: #4caf50;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+    }
+
+    .close-button {
+      color: #666;
+    }
+  }
+
+  .dialog-content {
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .content-card,
+    .stats-card,
+    .info-card {
+      margin: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      .card-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
+
+        .card-icon {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+          color: #4caf50;
+        }
+      }
+
+      mat-card-content {
+        padding-top: 16px;
+      }
+    }
+
+    .quotation-content {
+      .quotation-text {
+        font-size: 1.3rem;
+        line-height: 1.7;
+        color: #333;
+        background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+        padding: 24px;
+        border-radius: 12px;
+        border-left: 6px solid #4caf50;
+        margin-bottom: 20px;
+        font-style: italic;
+        text-align: center;
+        position: relative;
+        
+        &::before {
+          content: '"';
+          position: absolute;
+          top: -10px;
+          left: 10px;
+          font-size: 4rem;
+          color: #4caf50;
+          opacity: 0.3;
+        }
+        
+        &::after {
+          content: '"';
+          position: absolute;
+          bottom: -30px;
+          right: 10px;
+          font-size: 4rem;
+          color: #4caf50;
+          opacity: 0.3;
+        }
+      }
+
+      .author-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 16px;
+
+        .author-chip {
+          font-size: 1rem;
+          font-weight: 500;
+          
+          mat-icon {
+            margin-right: 4px;
+          }
+        }
+
+        .quotation-date {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #666;
+          font-size: 0.95rem;
+          
+          mat-icon {
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+            color: #4caf50;
+          }
+        }
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+
+      .copy-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+
+    .stats-card {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffcc02 30%, #ff9800 100%);
+
+      .card-title .card-icon {
+        color: #ff6f00;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        text-align: center;
+
+        .stat-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          padding: 16px;
+          background: rgba(255, 255, 255, 0.8);
+          border-radius: 12px;
+          border: 2px solid transparent;
+          transition: all 0.3s ease;
+
+          &:hover {
+            border-color: #ff6f00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 111, 0, 0.2);
+          }
+
+          .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6f00;
+          }
+
+          .stat-label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+
+            mat-icon {
+              font-size: 16px;
+              width: 16px;
+              height: 16px;
+              color: #ff6f00;
+            }
+          }
+        }
+      }
+    }
+
+    .section-divider {
+      margin: 16px 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+
+      .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .info-label {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-weight: 500;
+          color: #666;
+          font-size: 0.9rem;
+
+          mat-icon {
+            font-size: 16px;
+            width: 16px;
+            height: 16px;
+            color: #4caf50;
+          }
+        }
+
+        .info-value {
+          font-size: 1rem;
+          color: #333;
+          padding-left: 24px;
+          word-wrap: break-word;
+        }
+      }
+    }
+  }
+
+  .dialog-actions {
+    padding: 16px 24px;
+    margin: 0 -24px -24px -24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .details-dialog {
+    .dialog-content {
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+
+        .stat-item {
+          padding: 12px;
+
+          .stat-value {
+            font-size: 1.5rem;
+          }
+        }
+      }
+
+      .quotation-content {
+        .quotation-text {
+          font-size: 1.1rem;
+          padding: 20px;
+          
+          &::before,
+          &::after {
+            font-size: 3rem;
+          }
+        }
+
+        .author-section {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+    }
+
+    .dialog-header {
+      .title-section {
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        .title-icon {
+          font-size: 24px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+<div class="details-dialog">
+  <div mat-dialog-title class="dialog-header">
+    <div class="title-section">
+      <mat-icon class="title-icon">psychology</mat-icon>
+      <h2>Affirmation Details</h2>
+    </div>
+    <button
+      mat-icon-button
+      class="close-button"
+      (click)="onClose()"
+      aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="dialog-content">
+    <mat-card class="content-card">
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          <mat-icon class="card-icon">format_quote</mat-icon>
+          Affirmation Text
+        </mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="affirmation-text">
+          {{ data.affirmation.text }}
+        </div>
+        
+        <div class="action-buttons">
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="copyToClipboard()"
+            class="copy-button">
+            <mat-icon>content_copy</mat-icon>
+            Copy to Clipboard
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-divider class="section-divider"></mat-divider>
+
+    <mat-card class="info-card">
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          <mat-icon class="card-icon">info</mat-icon>
+          Information
+        </mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">
+              <mat-icon>fingerprint</mat-icon>
+              ID
+            </div>
+            <div class="info-value">{{ data.affirmation.id }}</div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-label">
+              <mat-icon>schedule</mat-icon>
+              Created
+            </div>
+            <div class="info-value">{{ formatDate(data.affirmation.createdAt) }}</div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-label">
+              <mat-icon>update</mat-icon>
+              Last Updated
+            </div>
+            <div class="info-value">{{ formatDate(data.affirmation.updatedAt) }}</div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-label">
+              <mat-icon>text_fields</mat-icon>
+              Character Count
+            </div>
+            <div class="info-value">{{ data.affirmation.text.length }}</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onClose()">
+      <mat-icon>check</mat-icon>
+      Done
+    </button>
+  </div>
+</div>

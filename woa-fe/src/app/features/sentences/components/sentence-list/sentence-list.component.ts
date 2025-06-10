@@ -13,6 +13,7 @@ import {
   SentenceRequest,
   SentenceDialogComponent
 } from '../../index';
+import { SentenceDetailsDialogComponent } from '../sentence-details-dialog/sentence-details-dialog.component';
 
 @Component({
   selector: 'app-sentence-list',
@@ -130,6 +131,13 @@ export class SentenceListComponent implements OnInit {
         }
       });
     }
+  }
+
+  openViewDialog(sentence: SentenceResponse): void {
+    this.dialog.open(SentenceDetailsDialogComponent, {
+      width: '700px',
+      data: { sentence }
+    });
   }
 
   formatDate(dateString: string): string {

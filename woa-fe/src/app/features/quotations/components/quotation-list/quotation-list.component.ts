@@ -13,6 +13,7 @@ import {
   QuotationRequest,
   QuotationDialogComponent
 } from '../../index';
+import { QuotationDetailsDialogComponent } from '../quotation-details-dialog/quotation-details-dialog.component';
 
 @Component({
   selector: 'app-quotation-list',
@@ -130,6 +131,13 @@ export class QuotationListComponent implements OnInit {
         }
       });
     }
+  }
+
+  openViewDialog(quotation: QuotationResponse): void {
+    this.dialog.open(QuotationDetailsDialogComponent, {
+      width: '650px',
+      data: { quotation }
+    });
   }
 
   formatDate(dateString: string): string {

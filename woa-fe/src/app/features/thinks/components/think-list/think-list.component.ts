@@ -13,6 +13,7 @@ import {
   ThinkRequest,
   ThinkDialogComponent
 } from '../../index';
+import { ThinkDetailsDialogComponent } from '../think-details-dialog/think-details-dialog.component';
 
 @Component({
   selector: 'app-think-list',
@@ -130,6 +131,13 @@ export class ThinkListComponent implements OnInit {
         }
       });
     }
+  }
+
+  openViewDialog(think: ThinkResponse): void {
+    this.dialog.open(ThinkDetailsDialogComponent, {
+      width: '600px',
+      data: { think }
+    });
   }
 
   formatDate(dateString: string): string {

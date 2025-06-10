@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cbd69-0d16-4267-b14c-c35147a640cf" name="Changes" comment="added think">
-      <change beforePath="$PROJECT_DIR$/woa-be/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/woa-be/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/components/think-list/think-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/components/think-list/think-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/components/think-list/think-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/components/think-list/think-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +96,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Spring Boot.WoaBeApplication.executor": "Debug",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "details",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -98,7 +110,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.WoaBeApplication">
+  <component name="RunManager" selected="npm.start">
     <configuration name="WoaBeApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.woa.WoaBeApplicationKt" />
       <module name="woa-be.main" />
@@ -148,8 +160,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.WoaBeApplication" />
         <item itemvalue="npm.start" />
+        <item itemvalue="Spring Boot.WoaBeApplication" />
         <item itemvalue="Kotlin.WoaBeApplicationKt" />
         <item itemvalue="npm.ng" />
       </list>

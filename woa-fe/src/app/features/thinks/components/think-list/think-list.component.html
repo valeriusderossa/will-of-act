@@ -42,6 +42,13 @@
           <td mat-cell *matCellDef="let think">
             <button
               mat-icon-button
+              color="accent"
+              (click)="openViewDialog(think)"
+              title="View Details">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button
+              mat-icon-button
               color="primary"
               (click)="openEditDialog(think)"
               title="Edit">
