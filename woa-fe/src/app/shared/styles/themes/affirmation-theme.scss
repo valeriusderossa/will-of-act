@@ -1,0 +1,18 @@
+// Affirmation Theme
+@import '../details-dialog.scss';
+
+// Apply blue theme for affirmations
+@include theme-colors(
+  $primary-color: #1976d2,
+  $background-start: #f8f9fa,
+  $background-end: #e3f2fd,
+  $border-color: #1976d2
+);
+
+// Affirmation-specific overrides
+.details-dialog {
+  .quotation-text::before,
+  .quotation-text::after {
+    color: #1976d2;
+  }
+}

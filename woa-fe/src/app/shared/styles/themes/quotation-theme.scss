@@ -1,0 +1,22 @@
+// Quotation Theme
+@import '../details-dialog.scss';
+
+// Apply green theme for quotations
+@include theme-colors(
+  $primary-color: #4caf50,
+  $background-start: #e8f5e8,
+  $background-end: #c8e6c9,
+  $border-color: #4caf50
+);
+
+// Quotation-specific overrides
+.details-dialog {
+  .quotation-text::before,
+  .quotation-text::after {
+    color: #4caf50;
+  }
+
+  .author-section .quotation-date mat-icon {
+    color: #4caf50;
+  }
+}

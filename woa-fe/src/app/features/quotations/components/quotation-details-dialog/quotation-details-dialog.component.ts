@@ -37,18 +37,6 @@ export class QuotationDetailsDialogComponent {
     this.dialogRef.close();
   }
 
-  formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(date);
-  }
-
   formatQuotationDate(dateString: string): string {
     if (!dateString) return 'Unknown date';
     const date = new Date(dateString);
@@ -64,13 +52,5 @@ export class QuotationDetailsDialogComponent {
     navigator.clipboard.writeText(fullQuotation).then(() => {
       console.log('Quotation copied to clipboard');
     });
-  }
-
-  getWordCount(): number {
-    return this.data.quotation.quotation.trim().split(/\s+/).length;
-  }
-
-  getSentenceCount(): number {
-    return this.data.quotation.quotation.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
   }
 }

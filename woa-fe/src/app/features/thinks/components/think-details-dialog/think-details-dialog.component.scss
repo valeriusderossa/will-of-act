@@ -1,3 +1,4 @@
+// Think Details Dialog Styles
 .details-dialog {
   max-width: 600px;
   width: 100%;
@@ -41,9 +42,7 @@
     flex-direction: column;
     gap: 24px;
 
-    .content-card,
-    .stats-card,
-    .info-card {
+    .content-card {
       margin: 0;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
@@ -90,99 +89,6 @@
         gap: 8px;
       }
     }
-
-    .stats-card {
-      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
-
-      .card-title .card-icon {
-        color: #9c27b0;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        text-align: center;
-
-        .stat-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-          padding: 16px;
-          background: rgba(255, 255, 255, 0.7);
-          border-radius: 12px;
-          border: 2px solid transparent;
-          transition: all 0.3s ease;
-
-          &:hover {
-            border-color: #9c27b0;
-            transform: translateY(-2px);
-          }
-
-          .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #9c27b0;
-          }
-
-          .stat-label {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 500;
-
-            mat-icon {
-              font-size: 16px;
-              width: 16px;
-              height: 16px;
-              color: #9c27b0;
-            }
-          }
-        }
-      }
-    }
-
-    .section-divider {
-      margin: 16px 0;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-
-      .info-item {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-        .info-label {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-weight: 500;
-          color: #666;
-          font-size: 0.9rem;
-
-          mat-icon {
-            font-size: 16px;
-            width: 16px;
-            height: 16px;
-            color: #ff9800;
-          }
-        }
-
-        .info-value {
-          font-size: 1rem;
-          color: #333;
-          padding-left: 24px;
-          word-wrap: break-word;
-        }
-      }
-    }
   }
 
   .dialog-actions {
@@ -205,24 +111,6 @@
 @media (max-width: 768px) {
   .details-dialog {
     .dialog-content {
-      .info-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-
-        .stat-item {
-          padding: 12px;
-
-          .stat-value {
-            font-size: 1.5rem;
-          }
-        }
-      }
-
       .think-text {
         font-size: 1rem;
         padding: 16px;

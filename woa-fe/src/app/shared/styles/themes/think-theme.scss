@@ -1,0 +1,18 @@
+// Think Theme
+@import '../details-dialog.scss';
+
+// Apply orange theme for thinks
+@include theme-colors(
+  $primary-color: #ff9800,
+  $background-start: #fff3e0,
+  $background-end: #ffe0b2,
+  $border-color: #ff9800
+);
+
+// Think-specific overrides
+.details-dialog {
+  .quotation-text::before,
+  .quotation-text::after {
+    color: #ff9800;
+  }
+}

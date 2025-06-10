@@ -21,7 +21,7 @@
           Translation Pair
         </mat-card-title>
       </mat-card-header>
-      
+
       <mat-card-content>
         <div class="translation-section">
           <div class="language-block english">
@@ -101,52 +101,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-divider class="section-divider"></mat-divider>
 
-    <mat-card class="info-card">
-      <mat-card-header>
-        <mat-card-title class="card-title">
-          <mat-icon class="card-icon">info</mat-icon>
-          Information
-        </mat-card-title>
-      </mat-card-header>
-      
-      <mat-card-content>
-        <div class="info-grid">
-          <div class="info-item">
-            <div class="info-label">
-              <mat-icon>fingerprint</mat-icon>
-              ID
-            </div>
-            <div class="info-value">{{ data.sentence.id }}</div>
-          </div>
-          
-          <div class="info-item">
-            <div class="info-label">
-              <mat-icon>schedule</mat-icon>
-              Created
-            </div>
-            <div class="info-value">{{ formatDate(data.sentence.createdAt) }}</div>
-          </div>
-          
-          <div class="info-item">
-            <div class="info-label">
-              <mat-icon>update</mat-icon>
-              Last Updated
-            </div>
-            <div class="info-value">{{ formatDate(data.sentence.updatedAt) }}</div>
-          </div>
-          
-          <div class="info-item">
-            <div class="info-label">
-              <mat-icon>text_fields</mat-icon>
-              Total Characters
-            </div>
-            <div class="info-value">{{ data.sentence.englishText.length + data.sentence.polishText.length }}</div>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
   </div>
 
   <div mat-dialog-actions class="dialog-actions">

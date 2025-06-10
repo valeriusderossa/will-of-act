@@ -35,21 +35,8 @@ export class AffirmationDetailsDialogComponent {
     this.dialogRef.close();
   }
 
-  formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(date);
-  }
-
   copyToClipboard(): void {
     navigator.clipboard.writeText(this.data.affirmation.text).then(() => {
-      // Could add a snackbar notification here
       console.log('Affirmation copied to clipboard');
     });
   }

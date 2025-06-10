@@ -21,12 +21,12 @@
           Thought Content
         </mat-card-title>
       </mat-card-header>
-      
+
       <mat-card-content>
         <div class="think-text">
           {{ data.think.text }}
         </div>
-        
+
         <div class="action-buttons">
           <button
             mat-stroked-button
@@ -40,75 +40,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-divider class="section-divider"></mat-divider>
 
-    <mat-card class="stats-card">
-      <mat-card-header>
-        <mat-card-title class="card-title">
-          <mat-icon class="card-icon">analytics</mat-icon>
-          Text Statistics
-        </mat-card-title>
-      </mat-card-header>
-      
-      <mat-card-content>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-value">{{ getWordCount() }}</div>
-            <div class="stat-label">
-              <mat-icon>text_fields</mat-icon>
-              Words
-            </div>
-          </div>
-          
-          <div class="stat-item">
-            <div class="stat-value">{{ getSentenceCount() }}</div>
-            <div class="stat-label">
-              <mat-icon>format_list_numbered</mat-icon>
-              Sentences
-            </div>
-          </div>
-          
-          <div class="stat-item">
-            <div class="stat-value">{{ data.think.text.length }}</div>
-            <div class="stat-label">
-              <mat-icon>text_format</mat-icon>
-              Characters
-            </div>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-divider class="section-divider"></mat-divider>
-
-    <mat-card class="info-card">
-      <mat-card-header>
-        <mat-card-title class="card-title">
-          <mat-icon class="card-icon">info</mat-icon>
-          Information
-        </mat-card-title>
-      </mat-card-header>
-      
-      <mat-card-content>
-        <div class="info-grid">
-          <div class="info-item">
-            <div class="info-label">
-              <mat-icon>fingerprint</mat-icon>
-              ID
-            </div>
-            <div class="info-value">{{ data.think.id }}</div>
-          </div>
-          
-          <div class="info-item">
-            <div class="info-label">
-              <mat-icon>schedule</mat-icon>
-              Created
-            </div>
-            <div class="info-value">{{ formatDate(data.think.createdAt) }}</div>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
   </div>
 
   <div mat-dialog-actions class="dialog-actions">
