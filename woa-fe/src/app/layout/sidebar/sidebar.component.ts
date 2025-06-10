@@ -57,6 +57,12 @@ export class SidebarComponent {
       route: '/thinks',
       icon: 'lightbulb',
       description: 'Personal thoughts and reflections'
+    },
+    {
+      label: 'Technical Learnings',
+      route: '/technical-learnings',
+      icon: 'school',
+      description: 'Programming & tech learning notes'
     }
   ];
 

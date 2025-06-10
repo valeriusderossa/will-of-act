@@ -1,0 +1,176 @@
+.learning-dialog {
+  max-width: 600px;
+  width: 100%;
+
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    margin: -24px -24px 0 -24px;
+
+    .title-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .title-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+        color: #673ab7;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+    }
+  }
+
+  .dialog-content {
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .full-width {
+      width: 100%;
+    }
+
+    .description-field {
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+    }
+
+    .example-suggestion {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+      border-radius: 8px;
+      border-left: 4px solid #673ab7;
+      margin-top: 8px;
+
+      mat-icon {
+        color: #673ab7;
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+      }
+
+      .suggestion-content {
+        flex: 1;
+
+        strong {
+          color: #673ab7;
+          font-size: 0.95rem;
+        }
+
+        p {
+          margin: 8px 0 4px 0;
+          font-size: 0.9rem;
+          color: #555;
+          line-height: 1.4;
+
+          strong {
+            color: #333;
+          }
+        }
+      }
+    }
+
+    // Character count styling
+    mat-form-field {
+      mat-hint {
+        text-align: right;
+        font-size: 0.8rem;
+        color: #666;
+      }
+
+      &.ng-invalid.ng-touched {
+        mat-hint {
+          color: #f44336;
+        }
+      }
+    }
+  }
+
+  .dialog-actions {
+    padding: 16px 24px;
+    margin: 0 -24px -24px -24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    .cancel-button,
+    .save-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .save-button {
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// Form validation styling
+.learning-dialog form {
+  mat-form-field {
+    &.ng-invalid.ng-touched {
+      .mat-mdc-form-field-outline-thick {
+        color: #f44336;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .learning-dialog {
+    .dialog-header {
+      .title-section {
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        .title-icon {
+          font-size: 24px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+
+    .dialog-content {
+      .example-suggestion {
+        flex-direction: column;
+        
+        mat-icon {
+          align-self: flex-start;
+        }
+      }
+    }
+
+    .dialog-actions {
+      flex-direction: column-reverse;
+      
+      .cancel-button,
+      .save-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

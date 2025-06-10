@@ -1,0 +1,75 @@
+<div class="technical-learning-dialog">
+  <div mat-dialog-title class="dialog-header">
+    <div class="title-section">
+      <mat-icon class="title-icon">school</mat-icon>
+      <h2>{{ isEdit ? 'Edit Technical Learning' : 'Add New Technical Learning' }}</h2>
+    </div>
+  </div>
+
+  <form [formGroup]="technicalLearningForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="dialog-content">
+      
+      <!-- Language Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Programming Language / Technology</mat-label>
+        <mat-select formControlName="language" placeholder="Select a language or technology">
+          <mat-option *ngFor="let lang of commonLanguages" [value]="lang">
+            {{ lang }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>code</mat-icon>
+        <mat-error *ngIf="getFieldError('language')">
+          {{ getFieldError('language') }}
+        </mat-error>
+        <mat-hint>Characters: {{ getCharacterCount('language') }} / {{ getMaxLength('language') }}</mat-hint>
+      </mat-form-field>
+
+      <!-- Subject Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Subject / Topic</mat-label>
+        <input 
+          matInput 
+          formControlName="subject" 
+          placeholder="e.g., Loops in Kotlin, React Hooks, SQL Joins">
+        <mat-icon matSuffix>topic</mat-icon>
+        <mat-error *ngIf="getFieldError('subject')">
+          {{ getFieldError('subject') }}
+        </mat-error>
+        <mat-hint>Characters: {{ getCharacterCount('subject') }} / {{ getMaxLength('subject') }}</mat-hint>
+      </mat-form-field>
+
+      <!-- Text/Description Field -->
+      <mat-form-field appearance="outline" class="full-width description-field">
+        <mat-label>Learning Description</mat-label>
+        <textarea 
+          matInput 
+          formControlName="text" 
+          rows="8"
+          placeholder="Describe what you learned, include code examples, key concepts, or important notes...">
+        </textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-error *ngIf="getFieldError('text')">
+          {{ getFieldError('text') }}
+        </mat-error>
+        <mat-hint>Characters: {{ getCharacterCount('text') }} / {{ getMaxLength('text') }}</mat-hint>
+      </mat-form-field>
+
+    </div>
+
+    <div mat-dialog-actions class="dialog-actions">
+      <button type="button" mat-button (click)="onCancel()" class="cancel-button">
+        <mat-icon>cancel</mat-icon>
+        Cancel
+      </button>
+      <button 
+        type="submit" 
+        mat-raised-button 
+        color="primary" 
+        [disabled]="technicalLearningForm.invalid"
+        class="save-button">
+        <mat-icon>{{ isEdit ? 'save' : 'add' }}</mat-icon>
+        {{ isEdit ? 'Update Technical Learning' : 'Add Technical Learning' }}
+      </button>
+    </div>
+  </form>
+</div>

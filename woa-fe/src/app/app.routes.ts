@@ -25,5 +25,10 @@ export const routes: Routes = [
     path: 'thinks',
     loadChildren: () => import('./features/thinks/thinks.routes')
       .then(r => r.THINKS_ROUTES)
+  },
+  {
+    path: 'technical-learnings',
+    loadChildren: () => import('./features/technical-learnings/technical-learnings.routes')
+      .then(r => r.technicalLearningsRoutes)
   }
 ];

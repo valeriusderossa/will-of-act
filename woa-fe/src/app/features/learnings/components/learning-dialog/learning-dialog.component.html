@@ -1,0 +1,89 @@
+<div class="learning-dialog">
+  <div mat-dialog-title class="dialog-header">
+    <div class="title-section">
+      <mat-icon class="title-icon">school</mat-icon>
+      <h2>{{ isEdit ? 'Edit Learning' : 'Add New Learning' }}</h2>
+    </div>
+  </div>
+
+  <form [formGroup]="learningForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="dialog-content">
+
+      <!-- Language Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Programming Language / Technology</mat-label>
+        <mat-select formControlName="language" placeholder="Select or type a language">
+          <mat-option *ngFor="let lang of commonLanguages" [value]="lang">
+            {{ lang }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>code</mat-icon>
+        <mat-error *ngIf="getFieldError('language')">
+          {{ getFieldError('language') }}
+        </mat-error>
+        <mat-hint>Characters: {{ getCharacterCount('language') }} / {{ getMaxLength('language') }}</mat-hint>
+      </mat-form-field>
+
+      <!-- Subject Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Subject / Topic</mat-label>
+        <input
+          matInput
+          formControlName="subject"
+          placeholder="e.g., Loops in Kotlin, React Hooks, SQL Joins">
+        <mat-icon matSuffix>topic</mat-icon>
+        <mat-error *ngIf="getFieldError('subject')">
+          {{ getFieldError('subject') }}
+        </mat-error>
+        <mat-hint>Characters: {{ getCharacterCount('subject') }} / {{ getMaxLength('subject') }}</mat-hint>
+      </mat-form-field>
+
+      <!-- Text/Description Field -->
+      <mat-form-field appearance="outline" class="full-width description-field">
+        <mat-label>Learning Description</mat-label>
+        <textarea
+          matInput
+          formControlName="text"
+          rows="8"
+          placeholder="Describe what you learned, include code examples, key concepts, or important notes...">
+        </textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-error *ngIf="getFieldError('text')">
+          {{ getFieldError('text') }}
+        </mat-error>
+        <mat-hint>Characters: {{ getCharacterCount('text') }} / {{ getMaxLength('text') }}</mat-hint>
+      </mat-form-field>
+
+      <!-- Example Content Suggestion -->
+      <div class="example-suggestion">
+        <mat-icon>lightbulb</mat-icon>
+        <div class="suggestion-content">
+          <strong>Example:</strong>
+          <p><strong>Language:</strong> Kotlin</p>
+          <p><strong>Subject:</strong> For loops in Kotlin</p>
+          <p><strong>Description:</strong> Learned different ways to iterate in Kotlin:<br>
+          - for (i in 1..10) - Range iteration<br>
+          - for (item in list) - Collection iteration<br>
+          - for (index in list.indices) - Index iteration</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div mat-dialog-actions class="dialog-actions">
+      <button type="button" mat-button (click)="onCancel()" class="cancel-button">
+        <mat-icon>cancel</mat-icon>
+        Cancel
+      </button>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="learningForm.invalid"
+        class="save-button">
+        <mat-icon>{{ isEdit ? 'save' : 'add' }}</mat-icon>
+        {{ isEdit ? 'Update Learning' : 'Add Learning' }}
+      </button>
+    </div>
+  </form>
+</div>

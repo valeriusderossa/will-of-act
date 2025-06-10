@@ -1,0 +1,59 @@
+<div class="details-dialog">
+  <div mat-dialog-title class="dialog-header">
+    <div class="title-section">
+      <mat-icon class="title-icon">school</mat-icon>
+      <h2>Technical Learning Details</h2>
+    </div>
+    <button
+      mat-icon-button
+      class="close-button"
+      (click)="onClose()"
+      aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="dialog-content">
+    <mat-card class="content-card">
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          <mat-icon class="card-icon">topic</mat-icon>
+          {{ data.learning.subject }}
+        </mat-card-title>
+        <mat-card-subtitle class="language-chip-container">
+          <mat-chip [color]="getLanguageColor(data.learning.language)">
+            <mat-icon>code</mat-icon>
+            {{ data.learning.language }}
+          </mat-chip>
+        </mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="learning-text">
+          {{ data.learning.text }}
+        </div>
+        
+        <div class="action-buttons">
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="copyToClipboard()"
+            class="copy-button">
+            <mat-icon>content_copy</mat-icon>
+            Copy Technical Learning
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onClose()">
+      <mat-icon>check</mat-icon>
+      Done
+    </button>
+  </div>
+</div>

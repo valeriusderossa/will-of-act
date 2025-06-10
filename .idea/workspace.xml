@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="711cbd69-0d16-4267-b14c-c35147a640cf" name="Changes" comment="added think">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/components/affirmation-list/affirmation-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/affirmations/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/components/quotation-list/quotation-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/quotations/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/components/sentence-list/sentence-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/sentences/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/components/think-list/think-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/components/think-list/think-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/components/think-list/think-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/components/think-list/think-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/woa-fe/src/app/features/thinks/index.ts" afterDir="false" />
-    </list>
+    <list default="true" id="711cbd69-0d16-4267-b14c-c35147a640cf" name="Changes" comment="working details" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -288,7 +274,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749483237090</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added details">
+      <option name="closed" value="true" />
+      <created>1749574415138</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1749574415138</updated>
+    </task>
+    <task id="LOCAL-00013" summary="working details">
+      <option name="closed" value="true" />
+      <created>1749580142901</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1749580142901</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +312,8 @@
     <MESSAGE value="working migration" />
     <MESSAGE value="wd" />
     <MESSAGE value="added think" />
-    <option name="LAST_COMMIT_MESSAGE" value="added think" />
+    <MESSAGE value="added details" />
+    <MESSAGE value="working details" />
+    <option name="LAST_COMMIT_MESSAGE" value="working details" />
   </component>
 </project>
