@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "clear-cache": "rm -rf .angular/cache && rm -rf node_modules/.vite && rm -rf dist && echo 'Cache cleared successfully!'"
   },
   "private": true,
   "dependencies": {
