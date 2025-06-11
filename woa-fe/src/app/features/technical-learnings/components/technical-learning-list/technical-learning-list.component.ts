@@ -12,6 +12,7 @@ import {
   TechnicalLearningService,
   TechnicalLearningResponse,
   TechnicalLearningRequest,
+  TechnicalLearningSummary,
   TechnicalLearningDialogComponent
 } from '../../index';
 import { TechnicalLearningDetailsDialogComponent } from '../technical-learning-details-dialog/technical-learning-details-dialog.component';
@@ -33,12 +34,10 @@ import { TechnicalLearningDetailsDialogComponent } from '../technical-learning-d
   styleUrl: './technical-learning-list.component.scss'
 })
 export class TechnicalLearningListComponent implements OnInit {
-  technicalLearnings: TechnicalLearningResponse[] = [];
-  filteredTechnicalLearnings: TechnicalLearningResponse[] = [];
+  technicalLearnings: TechnicalLearningSummary[] = [];
   displayedColumns: string[] = ['subject', 'language', 'text', 'createdAt', 'actions'];
   loading = false;
   message = '';
-  selectedLanguage = '';
 
   private readonly technicalLearningService = inject(TechnicalLearningService);
   private readonly dialog = inject(MatDialog);
@@ -54,7 +53,6 @@ export class TechnicalLearningListComponent implements OnInit {
     this.technicalLearningService.getAllTechnicalLearnings().subscribe({
       next: (learnings) => {
         this.technicalLearnings = learnings;
-        this.filteredTechnicalLearnings = learnings;
         this.loading = false;
       },
       error: (error) => {
@@ -78,22 +76,42 @@ export class TechnicalLearningListComponent implements OnInit {
     });
   }
 
-  openViewDialog(learning: TechnicalLearningResponse): void {
-    this.dialog.open(TechnicalLearningDetailsDialogComponent, {
-      width: '700px',
-      data: { learning }
+  openViewDialog(learning: TechnicalLearningSummary): void {
+    // Fetch full details before opening dialog
+    this.technicalLearningService.getTechnicalLearningById(learning.id).subscribe({
+      next: (fullLearning) => {
+        this.dialog.open(TechnicalLearningDetailsDialogComponent, {
+          width: '700px',
+          data: { learning: fullLearning }
+        });
+      },
+      error: (error) => {
+        console.error('Error loading technical learning details:', error);
+        this.message = 'Error loading technical learning details';
+        setTimeout(() => this.message = '', 3000);
+      }
     });
   }
 
-  openEditDialog(learning: TechnicalLearningResponse): void {
-    const dialogRef = this.dialog.open(TechnicalLearningDialogComponent, {
-      width: '600px',
-      data: { learning, isEdit: true }
-    });
+  openEditDialog(learning: TechnicalLearningSummary): void {
+    // Fetch full details before opening edit dialog
+    this.technicalLearningService.getTechnicalLearningById(learning.id).subscribe({
+      next: (fullLearning) => {
+        const dialogRef = this.dialog.open(TechnicalLearningDialogComponent, {
+          width: '600px',
+          data: { learning: fullLearning, isEdit: true }
+        });
 
-    dialogRef.afterClosed().subscribe((result: TechnicalLearningRequest) => {
-      if (result) {
-        this.updateTechnicalLearning(learning.id, result);
+        dialogRef.afterClosed().subscribe((result: TechnicalLearningRequest) => {
+          if (result) {
+            this.updateTechnicalLearning(learning.id, result);
+          }
+        });
+      },
+      error: (error) => {
+        console.error('Error loading technical learning details:', error);
+        this.message = 'Error loading technical learning details';
+        setTimeout(() => this.message = '', 3000);
       }
     });
   }
@@ -145,27 +163,6 @@ export class TechnicalLearningListComponent implements OnInit {
     }
   }
 
-  onLanguageFilter(language: string): void {
-    this.selectedLanguage = this.selectedLanguage === language ? '' : language;
-    this.applyFilters();
-  }
-
-  applyFilters(): void {
-    let filtered = this.technicalLearnings;
-
-    // Apply language filter
-    if (this.selectedLanguage) {
-      filtered = filtered.filter(learning => learning.language === this.selectedLanguage);
-    }
-
-    this.filteredTechnicalLearnings = filtered;
-  }
-
-  getUniqueLanguages(): string[] {
-    const languages = this.technicalLearnings.map(learning => learning.language);
-    return [...new Set(languages)].sort();
-  }
-
   formatDate(dateString: string): string {
     if (!dateString) return '';
     const date = new Date(dateString);
@@ -173,18 +170,7 @@ export class TechnicalLearningListComponent implements OnInit {
   }
 
   truncateText(text: string, maxLength: number = 60): string {
+    if (!text) return '';
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-  }
-
-  getLanguageColor(language: string): string {
-    const colors = {
-      'kotlin': 'primary',
-      'java': 'accent',
-      'javascript': 'warn',
-      'typescript': 'primary',
-      'python': 'accent',
-      'angular': 'warn'
-    };
-    return (colors as any)[language.toLowerCase()] || 'primary';
   }
 }

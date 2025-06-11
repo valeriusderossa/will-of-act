@@ -8,15 +8,14 @@
 
   <form [formGroup]="technicalLearningForm" (ngSubmit)="onSubmit()">
     <div mat-dialog-content class="dialog-content">
-      
+
       <!-- Language Field -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Programming Language / Technology</mat-label>
-        <mat-select formControlName="language" placeholder="Select a language or technology">
-          <mat-option *ngFor="let lang of commonLanguages" [value]="lang">
-            {{ lang }}
-          </mat-option>
-        </mat-select>
+        <input
+          matInput
+          formControlName="language"
+          placeholder="e.g., Kotlin, JavaScript, Python, Angular, SQL">
         <mat-icon matSuffix>code</mat-icon>
         <mat-error *ngIf="getFieldError('language')">
           {{ getFieldError('language') }}
@@ -27,9 +26,9 @@
       <!-- Subject Field -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Subject / Topic</mat-label>
-        <input 
-          matInput 
-          formControlName="subject" 
+        <input
+          matInput
+          formControlName="subject"
           placeholder="e.g., Loops in Kotlin, React Hooks, SQL Joins">
         <mat-icon matSuffix>topic</mat-icon>
         <mat-error *ngIf="getFieldError('subject')">
@@ -41,9 +40,9 @@
       <!-- Text/Description Field -->
       <mat-form-field appearance="outline" class="full-width description-field">
         <mat-label>Learning Description</mat-label>
-        <textarea 
-          matInput 
-          formControlName="text" 
+        <textarea
+          matInput
+          formControlName="text"
           rows="8"
           placeholder="Describe what you learned, include code examples, key concepts, or important notes...">
         </textarea>
@@ -61,10 +60,10 @@
         <mat-icon>cancel</mat-icon>
         Cancel
       </button>
-      <button 
-        type="submit" 
-        mat-raised-button 
-        color="primary" 
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
         [disabled]="technicalLearningForm.invalid"
         class="save-button">
         <mat-icon>{{ isEdit ? 'save' : 'add' }}</mat-icon>

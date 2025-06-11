@@ -7,7 +7,7 @@ import { LearningResponse, LearningRequest } from '../index';
   providedIn: 'root'
 })
 export class LearningService {
-  private readonly apiUrl = 'http://localhost:8080/api/learnings';
+  private readonly apiUrl = 'http://localhost:8090/api/learnings';
 
   constructor(private http: HttpClient) {}
 

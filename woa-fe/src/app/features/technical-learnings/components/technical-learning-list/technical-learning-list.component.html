@@ -3,32 +3,15 @@
     <h1>My Technical Learnings</h1>
     <p class="subtitle">Track your programming and technology learning notes</p>
 
-    <!-- Controls Section -->
-    <div class="controls-section">
-      <!-- Language Filter Chips -->
-      <div class="language-filters" *ngIf="getUniqueLanguages().length > 0">
-        <span class="filter-label">Filter by language:</span>
-        <div class="filter-chips">
-          <mat-chip 
-            *ngFor="let language of getUniqueLanguages()" 
-            [class.selected]="selectedLanguage === language"
-            [color]="selectedLanguage === language ? getLanguageColor(language) : 'basic'"
-            (click)="onLanguageFilter(language)">
-            {{ language }}
-          </mat-chip>
-        </div>
-      </div>
-
-      <!-- Add Button -->
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="openAddDialog()"
-        class="add-button">
-        <mat-icon>add</mat-icon>
-        Add New Technical Learning
-      </button>
-    </div>
+    <!-- Add Button -->
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openAddDialog()"
+      class="add-button">
+      <mat-icon>add</mat-icon>
+      Add New Technical Learning
+    </button>
   </div>
 
   <!-- Message Display -->
@@ -36,25 +19,14 @@
     {{ message }}
   </div>
 
-  <!-- Results Info -->
-  <div class="results-info" *ngIf="!loading && technicalLearnings.length > 0">
-    <span>Showing {{ filteredTechnicalLearnings.length }} of {{ technicalLearnings.length }} technical learnings</span>
-    <button mat-button color="primary" (click)="selectedLanguage = ''; applyFilters()" *ngIf="selectedLanguage">
-      <mat-icon>clear</mat-icon>
-      Clear Filter
-    </button>
-  </div>
-
   <div class="table-container" *ngIf="!loading">
     <mat-card class="table-card">
-      <table mat-table [dataSource]="filteredTechnicalLearnings">
+      <table mat-table [dataSource]="technicalLearnings">
         <!-- Subject Column -->
         <ng-container matColumnDef="subject">
           <th mat-header-cell *matHeaderCellDef>Subject</th>
           <td mat-cell *matCellDef="let learning" class="subject-cell">
-            <div class="subject-content">
-              <strong>{{ learning.subject }}</strong>
-            </div>
+            <strong>{{ learning.subject }}</strong>
           </td>
         </ng-container>
 
@@ -62,9 +34,7 @@
         <ng-container matColumnDef="language">
           <th mat-header-cell *matHeaderCellDef>Language</th>
           <td mat-cell *matCellDef="let learning">
-            <mat-chip [color]="getLanguageColor(learning.language)">
-              {{ learning.language }}
-            </mat-chip>
+            <mat-chip color="primary">{{ learning.language }}</mat-chip>
           </td>
         </ng-container>
 
@@ -72,7 +42,7 @@
         <ng-container matColumnDef="text">
           <th mat-header-cell *matHeaderCellDef>Description</th>
           <td mat-cell *matCellDef="let learning" class="text-cell">
-            <span [title]="learning.text">{{ truncateText(learning.text) }}</span>
+            <span [title]="learning.textPreview">{{ truncateText(learning.textPreview) }}</span>
           </td>
         </ng-container>
 
@@ -115,13 +85,10 @@
       </table>
 
       <!-- Empty State -->
-      <div class="empty-state" *ngIf="filteredTechnicalLearnings.length === 0 && !loading">
-        <mat-icon class="empty-icon" *ngIf="!selectedLanguage">school</mat-icon>
-        <mat-icon class="empty-icon" *ngIf="selectedLanguage">search_off</mat-icon>
-        <h2 *ngIf="!selectedLanguage">No technical learnings yet</h2>
-        <h2 *ngIf="selectedLanguage">No technical learnings found</h2>
-        <p *ngIf="!selectedLanguage">Start documenting your technical learning journey!</p>
-        <p *ngIf="selectedLanguage">Try selecting a different language filter.</p>
+      <div class="empty-state" *ngIf="technicalLearnings.length === 0">
+        <mat-icon class="empty-icon">school</mat-icon>
+        <h2>No technical learnings yet</h2>
+        <p>Start documenting your technical learning journey!</p>
       </div>
     </mat-card>
   </div>

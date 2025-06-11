@@ -5,9 +5,11 @@
   .dialog-header {
     display: flex;
     align-items: center;
-    padding: 16px 24px;
+    padding: 20px 24px;
     border-bottom: 1px solid #e0e0e0;
     margin: -24px -24px 0 -24px;
+    background: linear-gradient(135deg, #673ab7 0%, #9c27b0 100%);
+    color: white;
 
     .title-section {
       display: flex;
@@ -18,14 +20,14 @@
         font-size: 28px;
         width: 28px;
         height: 28px;
-        color: #673ab7;
+        color: white;
       }
 
       h2 {
         margin: 0;
         font-size: 1.5rem;
         font-weight: 500;
-        color: #333;
+        color: white;
       }
     }
   }
@@ -44,15 +46,32 @@
       textarea {
         min-height: 150px;
         resize: vertical;
+        font-family: 'Roboto Mono', monospace;
+        line-height: 1.5;
       }
     }
 
-    // Character count styling
+    // Enhanced form field styling
     mat-form-field {
+      &.mat-mdc-form-field {
+        .mat-mdc-form-field-outline {
+          border-radius: 8px;
+        }
+
+        &:hover .mat-mdc-form-field-outline {
+          box-shadow: 0 2px 8px rgba(103, 58, 183, 0.1);
+        }
+
+        &.mat-focused .mat-mdc-form-field-outline-thick {
+          color: #673ab7;
+        }
+      }
+
       mat-hint {
         text-align: right;
         font-size: 0.8rem;
         color: #666;
+        margin-top: 4px;
       }
 
       &.ng-invalid.ng-touched {
@@ -60,13 +79,18 @@
           color: #f44336;
         }
       }
+
+      mat-icon {
+        color: #673ab7;
+      }
     }
   }
 
   .dialog-actions {
-    padding: 16px 24px;
+    padding: 20px 24px;
     margin: 0 -24px -24px -24px;
     border-top: 1px solid #e0e0e0;
+    background: #f8f9fa;
     display: flex;
     justify-content: flex-end;
     gap: 12px;
@@ -76,23 +100,46 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .cancel-button {
+      &:hover {
+        background-color: #f5f5f5;
+      }
     }
 
     .save-button {
+      background: linear-gradient(135deg, #673ab7 0%, #9c27b0 100%);
+
+      &:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(103, 58, 183, 0.3);
+      }
+
       &:disabled {
         opacity: 0.6;
         cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
       }
     }
   }
 }
 
-// Form validation styling
+// Enhanced form validation styling
 .technical-learning-dialog form {
   mat-form-field {
     &.ng-invalid.ng-touched {
       .mat-mdc-form-field-outline-thick {
-        color: #f44336;
+        color: #f44336 !important;
+      }
+
+      .mat-mdc-form-field-outline {
+        box-shadow: 0 0 0 1px rgba(244, 67, 54, 0.3);
       }
     }
   }
@@ -101,7 +148,11 @@
 // Responsive design
 @media (max-width: 768px) {
   .technical-learning-dialog {
+    max-width: 95vw;
+
     .dialog-header {
+      padding: 16px 20px;
+
       .title-section {
         h2 {
           font-size: 1.3rem;
@@ -115,13 +166,36 @@
       }
     }
 
+    .dialog-content {
+      padding: 20px 0;
+      gap: 16px;
+
+      .description-field textarea {
+        min-height: 120px;
+      }
+    }
+
     .dialog-actions {
       flex-direction: column-reverse;
-      
+      padding: 16px 20px;
+
       .cancel-button,
       .save-button {
         width: 100%;
         justify-content: center;
+        padding: 12px 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .technical-learning-dialog {
+    .dialog-header {
+      .title-section {
+        h2 {
+          font-size: 1.2rem;
+        }
       }
     }
   }

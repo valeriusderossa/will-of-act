@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TechnicalLearningResponse, TechnicalLearningRequest } from '../index';
+import { TechnicalLearningResponse, TechnicalLearningRequest, TechnicalLearningSummary } from '../index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TechnicalLearningService {
-  private readonly apiUrl = 'http://localhost:8080/api/learnings';
+  private readonly apiUrl = 'http://localhost:8090/api/learnings';
 
   constructor(private http: HttpClient) {}
 
-  getAllTechnicalLearnings(): Observable<TechnicalLearningResponse[]> {
-    return this.http.get<TechnicalLearningResponse[]>(this.apiUrl);
+  getAllTechnicalLearnings(): Observable<TechnicalLearningSummary[]> {
+    return this.http.get<TechnicalLearningSummary[]>(this.apiUrl);
   }
 
   getTechnicalLearningById(id: number): Observable<TechnicalLearningResponse> {

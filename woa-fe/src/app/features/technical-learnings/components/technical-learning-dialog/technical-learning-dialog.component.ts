@@ -5,7 +5,6 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/materia
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { TechnicalLearningRequest } from '../../models/technical-learning-request.model';
 import { TechnicalLearningResponse } from '../../models/technical-learning.model';
@@ -26,7 +25,6 @@ export interface TechnicalLearningDialogData {
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatSelectModule,
     MatIconModule
   ],
   templateUrl: './technical-learning-dialog.component.html',
@@ -35,36 +33,6 @@ export interface TechnicalLearningDialogData {
 export class TechnicalLearningDialogComponent implements OnInit {
   technicalLearningForm: FormGroup;
   isEdit: boolean;
-
-  commonLanguages = [
-    'JavaScript',
-    'TypeScript',
-    'Python',
-    'Java',
-    'Kotlin',
-    'Swift',
-    'C#',
-    'Go',
-    'Rust',
-    'PHP',
-    'Ruby',
-    'C++',
-    'C',
-    'Dart',
-    'Scala',
-    'R',
-    'SQL',
-    'HTML',
-    'CSS',
-    'Angular',
-    'React',
-    'Vue.js',
-    'Node.js',
-    'Spring',
-    'Django',
-    'Flutter',
-    'Other'
-  ];
 
   constructor(
     public dialogRef: MatDialogRef<TechnicalLearningDialogComponent>,
