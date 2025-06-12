@@ -1,0 +1,153 @@
+<div class="gym-details-container">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>
+      <mat-icon>sports_gymnastics</mat-icon>
+      Exercise Details
+    </h2>
+    <button 
+      mat-icon-button 
+      (click)="onClose()"
+      class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+    
+    <!-- Exercise Header Info -->
+    <mat-card class="exercise-header-card">
+      <div class="exercise-header">
+        <div class="exercise-main-info">
+          <h1 class="exercise-name">{{ exercise.name }}</h1>
+          <mat-chip 
+            [style.background-color]="getBodyPartColor(exercise.partOfBody)"
+            class="body-part-chip">
+            <mat-icon [fontIcon]="getBodyPartIcon(exercise.partOfBody)"></mat-icon>
+            {{ exercise.partOfBody }}
+          </mat-chip>
+        </div>
+        
+        <div class="exercise-date">
+          <mat-icon>event</mat-icon>
+          <span>{{ formatDate(exercise.date) }}</span>
+        </div>
+      </div>
+    </mat-card>
+
+    <!-- Statistics Cards -->
+    <div class="stats-grid">
+      <mat-card class="stat-card">
+        <div class="stat-content">
+          <mat-icon class="stat-icon sets-icon">format_list_numbered</mat-icon>
+          <div class="stat-info">
+            <span class="stat-value">{{ exercise.sets.length }}</span>
+            <span class="stat-label">Sets</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <div class="stat-content">
+          <mat-icon class="stat-icon reps-icon">repeat</mat-icon>
+          <div class="stat-info">
+            <span class="stat-value">{{ getTotalReps() }}</span>
+            <span class="stat-label">Total Reps</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <div class="stat-content">
+          <mat-icon class="stat-icon weight-icon">fitness_center</mat-icon>
+          <div class="stat-info">
+            <span class="stat-value">{{ getMaxWeight() }} kg</span>
+            <span class="stat-label">Max Weight</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <div class="stat-content">
+          <mat-icon class="stat-icon volume-icon">assessment</mat-icon>
+          <div class="stat-info">
+            <span class="stat-value">{{ getTotalWeight() }} kg</span>
+            <span class="stat-label">Total Volume</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Sets Breakdown -->
+    <div class="sets-section">
+      <h3 class="section-title">
+        <mat-icon>list</mat-icon>
+        Sets Breakdown
+      </h3>
+
+      <div class="sets-list">
+        <mat-card 
+          *ngFor="let set of exercise.sets; let i = index" 
+          class="set-detail-card">
+          <div class="set-detail-content">
+            <div class="set-number">
+              <span class="set-badge">{{ i + 1 }}</span>
+            </div>
+            
+            <div class="set-details">
+              <div class="set-metric">
+                <mat-icon class="metric-icon">repeat</mat-icon>
+                <span class="metric-value">{{ set.reps }}</span>
+                <span class="metric-label">reps</span>
+              </div>
+              
+              <div class="set-separator">×</div>
+              
+              <div class="set-metric">
+                <mat-icon class="metric-icon">fitness_center</mat-icon>
+                <span class="metric-value">{{ set.weight }}</span>
+                <span class="metric-label">kg</span>
+              </div>
+            </div>
+
+            <div class="set-volume">
+              <span class="volume-value">{{ set.reps * set.weight }} kg</span>
+              <span class="volume-label">volume</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+      <!-- Sets Summary -->
+      <mat-card class="sets-summary-card">
+        <h4>Session Summary</h4>
+        <div class="summary-metrics">
+          <div class="summary-metric">
+            <span class="metric-label">Average Weight:</span>
+            <span class="metric-value">{{ getAverageWeight().toFixed(1) }} kg</span>
+          </div>
+          <div class="summary-metric">
+            <span class="metric-label">Total Volume:</span>
+            <span class="metric-value">{{ getTotalWeight() }} kg</span>
+          </div>
+          <div class="summary-metric">
+            <span class="metric-label">Total Reps:</span>
+            <span class="metric-value">{{ getTotalReps() }}</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button 
+      mat-raised-button 
+      color="primary" 
+      (click)="onClose()"
+      class="close-btn">
+      <mat-icon>check</mat-icon>
+      Close
+    </button>
+  </mat-dialog-actions>
+</div>

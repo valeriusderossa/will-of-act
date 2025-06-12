@@ -12,6 +12,7 @@ interface NavigationItem {
   route: string;
   icon: string;
   description: string;
+  children?: NavigationItem[];
 }
 
 @Component({
@@ -32,6 +33,8 @@ interface NavigationItem {
 export class SidebarComponent {
   @Input() isOpen = false;
   @Output() closeSidebar = new EventEmitter<void>();
+
+  private openSubMenus = new Set<string>();
 
   navigationItems: NavigationItem[] = [
     {
@@ -63,6 +66,26 @@ export class SidebarComponent {
       route: '/technical-learnings',
       icon: 'school',
       description: 'Programming & tech learning notes'
+    },
+    {
+      label: 'Exercises',
+      route: '/exercises',
+      icon: 'fitness_center',
+      description: 'Fitness and training tracking',
+      children: [
+        {
+          label: 'Gym',
+          route: '/exercises/gym',
+          icon: 'sports_gymnastics',
+          description: 'Strength training sessions'
+        },
+        {
+          label: 'Running',
+          route: '/exercises/running',
+          icon: 'directions_run',
+          description: 'Cardio and running activities'
+        }
+      ]
     }
   ];
 
@@ -75,5 +98,17 @@ export class SidebarComponent {
     if (window.innerWidth <= 768) {
       this.onCloseSidebar();
     }
+  }
+
+  toggleSubMenu(label: string): void {
+    if (this.openSubMenus.has(label)) {
+      this.openSubMenus.delete(label);
+    } else {
+      this.openSubMenus.add(label);
+    }
+  }
+
+  isSubMenuOpen(label: string): boolean {
+    return this.openSubMenus.has(label);
   }
 }

@@ -1,0 +1,136 @@
+<div class="running-list-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="title-area">
+      <h2>
+        <mat-icon>directions_run</mat-icon>
+        Running Sessions
+      </h2>
+      <p class="subtitle">Track your cardio and running activities</p>
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openAddDialog()"
+      class="add-button">
+      <mat-icon>add</mat-icon>
+      Add Run
+    </button>
+  </div>
+
+  <!-- Message Display -->
+  <div *ngIf="message" class="message" [ngClass]="{'success': message.includes('successfully'), 'error': message.includes('Error')}">
+    {{ message }}
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="loading-container">
+    <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+    <p>Loading running sessions...</p>
+  </div>
+
+  <!-- Running Table -->
+  <mat-card *ngIf="!loading" class="table-card">
+    <div class="table-header">
+      <h3>Your Running Sessions ({{ runningExercises.length }})</h3>
+    </div>
+
+    <div class="table-container">
+      <table mat-table [dataSource]="runningExercises" class="exercises-table">
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let exercise">
+            <div class="date-info">
+              <mat-icon class="date-icon">event</mat-icon>
+              {{ formatDate(exercise.date) }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Distance Column -->
+        <ng-container matColumnDef="distance">
+          <th mat-header-cell *matHeaderCellDef>Distance</th>
+          <td mat-cell *matCellDef="let exercise">
+            <div class="distance-info">
+              <strong>{{ exercise.distance }} km</strong>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Time Column -->
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef>Time</th>
+          <td mat-cell *matCellDef="let exercise">
+            <div class="time-info">
+              <mat-icon class="time-icon">timer</mat-icon>
+              {{ formatDuration(exercise.time) }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Average Speed Column -->
+        <ng-container matColumnDef="averageSpeed">
+          <th mat-header-cell *matHeaderCellDef>Avg Speed</th>
+          <td mat-cell *matCellDef="let exercise">
+            <div class="speed-info">
+              <span
+                class="speed-value"
+                [style.color]="getSpeedColor(calculateAverageSpeed(exercise))">
+                {{ calculateAverageSpeed(exercise).toFixed(1) }} km/h
+              </span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let exercise">
+            <div class="actions-container">
+              <button
+                mat-icon-button
+                (click)="openViewDialog(exercise)"
+                matTooltip="View Details"
+                color="primary">
+                <mat-icon>visibility</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                (click)="openEditDialog(exercise)"
+                matTooltip="Edit Run"
+                color="accent">
+                <mat-icon>edit</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                (click)="deleteRunningExercise(exercise.id)"
+                matTooltip="Delete Run"
+                color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="exercise-row"></tr>
+      </table>
+
+      <!-- Empty State -->
+      <div *ngIf="runningExercises.length === 0" class="empty-state">
+        <mat-icon class="empty-icon">directions_run</mat-icon>
+        <h3>No running sessions found</h3>
+        <p>Start tracking your cardio by adding your first run!</p>
+        <button mat-raised-button color="primary" (click)="openAddDialog()">
+          <mat-icon>add</mat-icon>
+          Add First Run
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>

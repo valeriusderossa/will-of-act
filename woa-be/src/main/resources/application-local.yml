@@ -18,7 +18,7 @@ spring:
   # JPA and Hibernate Configuration
   jpa:
     hibernate:
-      ddl-auto: validate # Change from 'update' to 'validate' to let Flyway handle schema changes
+      ddl-auto: update # Temporarily change from 'validate' to 'update' for development
     show-sql: true
     properties:
       hibernate:
@@ -31,6 +31,6 @@ spring:
     enabled: true
     locations: classpath:db/migration,classpath:db/test-data
     baseline-on-migrate: true
-    validate-on-migrate: false # Disable validation for now due to out of order migrations
+    validate-on-migrate: false # Disable validation due to checksum mismatches
     out-of-order: true # Allow out of order migration execution
     schemas: public

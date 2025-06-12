@@ -30,5 +30,10 @@ export const routes: Routes = [
     path: 'technical-learnings',
     loadChildren: () => import('./features/technical-learnings/technical-learnings.routes')
       .then(r => r.technicalLearningsRoutes)
+  },
+  {
+    path: 'exercises',
+    loadChildren: () => import('./features/exercises/exercises.routes')
+      .then(r => r.EXERCISE_ROUTES)
   }
 ];
