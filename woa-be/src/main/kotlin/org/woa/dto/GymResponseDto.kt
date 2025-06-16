@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class GymResponseDto(
-    val id: String,
+    val id: Long,
     override val name: String,
     override val partOfBody: String,
     

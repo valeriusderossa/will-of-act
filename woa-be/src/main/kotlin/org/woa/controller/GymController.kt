@@ -9,7 +9,6 @@ import org.woa.dto.GymResponseDto
 import org.woa.dto.GymSummaryDto
 import org.woa.service.GymService
 import java.time.LocalDate
-import java.util.*
 
 @RestController
 @RequestMapping("/api/gym")
@@ -28,7 +27,7 @@ class GymController(private val gymService: GymService) {
     }
 
     @GetMapping("/{id}")
-    fun getGymExerciseById(@PathVariable id: String): ResponseEntity<GymResponseDto> {
+    fun getGymExerciseById(@PathVariable id: Long): ResponseEntity<GymResponseDto> {
         return try {
             ResponseEntity.ok(gymService.getGymExerciseById(id))
         } catch (e: NoSuchElementException) {
@@ -71,7 +70,7 @@ class GymController(private val gymService: GymService) {
 
     @PutMapping("/{id}")
     fun updateGymExercise(
-        @PathVariable id: String,
+        @PathVariable id: Long,
         @RequestBody requestDto: GymRequestDto
     ): ResponseEntity<GymResponseDto> {
         return try {
@@ -83,7 +82,7 @@ class GymController(private val gymService: GymService) {
     }
 
     @DeleteMapping("/{id}")
-    fun deleteGymExercise(@PathVariable id: String): ResponseEntity<Void> {
+    fun deleteGymExercise(@PathVariable id: Long): ResponseEntity<Void> {
         return try {
             gymService.deleteGymExercise(id)
             ResponseEntity.noContent().build()

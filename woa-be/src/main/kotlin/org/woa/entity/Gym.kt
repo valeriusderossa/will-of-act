@@ -7,7 +7,8 @@ import java.time.LocalDate
 @Table(name = "gym_exercises")
 data class Gym(
     @Id
-    val id: String,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long?,
 
     @Column(nullable = false)
     val name: String,
@@ -27,7 +28,7 @@ data class Gym(
 ) {
     // JPA requires a no-args constructor
     constructor() : this(
-        id = "",
+        id = null,
         name = "",
         partOfBody = "",
         date = LocalDate.now(),

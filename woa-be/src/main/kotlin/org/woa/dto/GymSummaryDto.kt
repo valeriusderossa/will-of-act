@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class GymSummaryDto(
-    val id: String,
+    val id: Long,
     val name: String,
     val partOfBody: String,
     

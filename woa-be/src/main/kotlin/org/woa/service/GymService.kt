@@ -7,7 +7,6 @@ import org.woa.entity.Gym
 import org.woa.entity.SetEntry
 import org.woa.repository.GymRepository
 import java.time.LocalDate
-import java.util.*
 
 @Service
 class GymService(private val gymRepository: GymRepository) {
@@ -21,7 +20,7 @@ class GymService(private val gymRepository: GymRepository) {
     }
 
     @Transactional
-    fun getGymExerciseById(id: String): GymResponseDto {
+    fun getGymExerciseById(id: Long): GymResponseDto {
         val gym = gymRepository.findById(id)
             .orElseThrow { NoSuchElementException("Gym exercise not found with ID: $id") }
         
@@ -51,7 +50,7 @@ class GymService(private val gymRepository: GymRepository) {
     @Transactional
     fun createGymExercise(requestDto: GymRequestDto): GymResponseDto {
         val gym = Gym(
-            id = generateGymId(),
+            id = null, // Let the database generate the ID
             name = requestDto.name,
             partOfBody = requestDto.partOfBody,
             date = requestDto.date,
@@ -62,7 +61,7 @@ class GymService(private val gymRepository: GymRepository) {
     }
 
     @Transactional
-    fun updateGymExercise(id: String, requestDto: GymRequestDto): GymResponseDto {
+    fun updateGymExercise(id: Long, requestDto: GymRequestDto): GymResponseDto {
         val existingGym = gymRepository.findById(id)
             .orElseThrow { NoSuchElementException("Gym exercise not found with ID: $id") }
         
@@ -77,20 +76,16 @@ class GymService(private val gymRepository: GymRepository) {
     }
 
     @Transactional
-    fun deleteGymExercise(id: String) {
+    fun deleteGymExercise(id: Long) {
         if (!gymRepository.existsById(id)) {
             throw NoSuchElementException("Gym exercise not found with ID: $id")
         }
         gymRepository.deleteById(id)
     }
 
-    private fun generateGymId(): String {
-        return "gym-${UUID.randomUUID()}"
-    }
-
     private fun Gym.toResponseDto(): GymResponseDto {
         return GymResponseDto(
-            id = this.id,
+            id = this.id ?: 0L, // Handle null case, though it should not happen for persisted entities
             name = this.name,
             partOfBody = this.partOfBody,
             date = this.date,
@@ -105,7 +100,7 @@ class GymService(private val gymRepository: GymRepository) {
         val avgWeight = if (this.sets.isNotEmpty()) this.sets.map { it.weight }.average() else 0.0
 
         return GymSummaryDto(
-            id = this.id,
+            id = this.id ?: 0L, // Handle null case, though it should not happen for persisted entities
             name = this.name,
             partOfBody = this.partOfBody,
             date = this.date,
