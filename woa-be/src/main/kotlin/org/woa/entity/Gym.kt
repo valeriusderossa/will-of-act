@@ -8,7 +8,7 @@ import java.time.LocalDate
 data class Gym(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
+    val id: Long? = null,
 
     @Column(nullable = false)
     val name: String,
@@ -25,13 +25,4 @@ data class Gym(
         joinColumns = [JoinColumn(name = "gym_exercise_id")]
     )
     val sets: List<SetEntry>
-) {
-    // JPA requires a no-args constructor
-    constructor() : this(
-        id = null,
-        name = "",
-        partOfBody = "",
-        date = LocalDate.now(),
-        sets = emptyList()
-    )
-}
+)

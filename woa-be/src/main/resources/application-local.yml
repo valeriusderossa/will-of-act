@@ -18,7 +18,7 @@ spring:
   # JPA and Hibernate Configuration
   jpa:
     hibernate:
-      ddl-auto: update # Temporarily change from 'validate' to 'update' for development
+      ddl-auto: none # Temporarily disable to let Flyway handle the ID migration
     show-sql: true
     properties:
       hibernate:

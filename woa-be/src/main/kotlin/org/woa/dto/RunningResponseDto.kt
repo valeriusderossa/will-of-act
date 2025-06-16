@@ -7,7 +7,7 @@ import java.time.LocalDate
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class RunningResponseDto(
-    val id: String,
+    val id: Long?,
     override val distance: Double,
     override val time: Duration,
     

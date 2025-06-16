@@ -7,7 +7,7 @@ import java.time.LocalDate
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class RunningSummaryDto(
-    val id: String,
+    val id: Long?,
     val distance: Double,
     val time: Duration,
     

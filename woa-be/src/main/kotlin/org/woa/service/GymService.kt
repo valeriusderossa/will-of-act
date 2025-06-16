@@ -50,7 +50,6 @@ class GymService(private val gymRepository: GymRepository) {
     @Transactional
     fun createGymExercise(requestDto: GymRequestDto): GymResponseDto {
         val gym = Gym(
-            id = null, // Let the database generate the ID
             name = requestDto.name,
             partOfBody = requestDto.partOfBody,
             date = requestDto.date,
@@ -85,7 +84,7 @@ class GymService(private val gymRepository: GymRepository) {
 
     private fun Gym.toResponseDto(): GymResponseDto {
         return GymResponseDto(
-            id = this.id ?: 0L, // Handle null case, though it should not happen for persisted entities
+            id = this.id,
             name = this.name,
             partOfBody = this.partOfBody,
             date = this.date,
@@ -100,7 +99,7 @@ class GymService(private val gymRepository: GymRepository) {
         val avgWeight = if (this.sets.isNotEmpty()) this.sets.map { it.weight }.average() else 0.0
 
         return GymSummaryDto(
-            id = this.id ?: 0L, // Handle null case, though it should not happen for persisted entities
+            id = this.id,
             name = this.name,
             partOfBody = this.partOfBody,
             date = this.date,

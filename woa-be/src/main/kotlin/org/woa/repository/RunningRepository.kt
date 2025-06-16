@@ -8,7 +8,7 @@ import org.woa.entity.Running
 import java.time.LocalDate
 
 @Repository
-interface RunningRepository : JpaRepository<Running, String> {
+interface RunningRepository : JpaRepository<Running, Long> {
     
     fun findByDateBetweenOrderByDateDesc(startDate: LocalDate, endDate: LocalDate): List<Running>
     

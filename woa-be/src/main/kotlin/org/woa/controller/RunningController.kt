@@ -9,7 +9,6 @@ import org.woa.dto.RunningResponseDto
 import org.woa.dto.RunningSummaryDto
 import org.woa.service.RunningService
 import java.time.LocalDate
-import java.util.*
 
 @RestController
 @RequestMapping("/api/running")
@@ -28,7 +27,7 @@ class RunningController(private val runningService: RunningService) {
     }
 
     @GetMapping("/{id}")
-    fun getRunningExerciseById(@PathVariable id: String): ResponseEntity<RunningResponseDto> {
+    fun getRunningExerciseById(@PathVariable id: Long): ResponseEntity<RunningResponseDto> {
         return try {
             ResponseEntity.ok(runningService.getRunningExerciseById(id))
         } catch (e: NoSuchElementException) {
@@ -73,7 +72,7 @@ class RunningController(private val runningService: RunningService) {
 
     @PutMapping("/{id}")
     fun updateRunningExercise(
-        @PathVariable id: String,
+        @PathVariable id: Long,
         @RequestBody requestDto: RunningRequestDto
     ): ResponseEntity<RunningResponseDto> {
         return try {
@@ -85,7 +84,7 @@ class RunningController(private val runningService: RunningService) {
     }
 
     @DeleteMapping("/{id}")
-    fun deleteRunningExercise(@PathVariable id: String): ResponseEntity<Void> {
+    fun deleteRunningExercise(@PathVariable id: Long): ResponseEntity<Void> {
         return try {
             runningService.deleteRunningExercise(id)
             ResponseEntity.noContent().build()

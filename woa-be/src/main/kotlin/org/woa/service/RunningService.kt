@@ -8,7 +8,6 @@ import org.woa.dto.RunningSummaryDto
 import org.woa.entity.Running
 import org.woa.repository.RunningRepository
 import java.time.LocalDate
-import java.util.*
 
 @Service
 class RunningService(private val runningRepository: RunningRepository) {
@@ -22,7 +21,7 @@ class RunningService(private val runningRepository: RunningRepository) {
     }
 
     @Transactional
-    fun getRunningExerciseById(id: String): RunningResponseDto {
+    fun getRunningExerciseById(id: Long): RunningResponseDto {
         val running = runningRepository.findById(id)
             .orElseThrow { NoSuchElementException("Running exercise not found with ID: $id") }
         
@@ -51,7 +50,6 @@ class RunningService(private val runningRepository: RunningRepository) {
     @Transactional
     fun createRunningExercise(requestDto: RunningRequestDto): RunningResponseDto {
         val running = Running(
-            id = generateRunningId(),
             distance = requestDto.distance,
             time = requestDto.time,
             date = requestDto.date
@@ -61,7 +59,7 @@ class RunningService(private val runningRepository: RunningRepository) {
     }
 
     @Transactional
-    fun updateRunningExercise(id: String, requestDto: RunningRequestDto): RunningResponseDto {
+    fun updateRunningExercise(id: Long, requestDto: RunningRequestDto): RunningResponseDto {
         val existingRunning = runningRepository.findById(id)
             .orElseThrow { NoSuchElementException("Running exercise not found with ID: $id") }
         
@@ -75,15 +73,11 @@ class RunningService(private val runningRepository: RunningRepository) {
     }
 
     @Transactional
-    fun deleteRunningExercise(id: String) {
+    fun deleteRunningExercise(id: Long) {
         if (!runningRepository.existsById(id)) {
             throw NoSuchElementException("Running exercise not found with ID: $id")
         }
         runningRepository.deleteById(id)
-    }
-
-    private fun generateRunningId(): String {
-        return "run-${UUID.randomUUID()}"
     }
 
     private fun Running.toResponseDto(): RunningResponseDto {

@@ -8,7 +8,8 @@ import java.time.LocalDate
 @Table(name = "running_exercises")
 data class Running(
     @Id
-    val id: String,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
 
     @Column(nullable = false)
     val distance: Double,
@@ -19,12 +20,4 @@ data class Running(
 
     @Column(nullable = false)
     val date: LocalDate
-) {
-    // JPA requires a no-args constructor
-    constructor() : this(
-        id = "",
-        distance = 0.0,
-        time = Duration.ZERO,
-        date = LocalDate.now()
-    )
-}
+)
